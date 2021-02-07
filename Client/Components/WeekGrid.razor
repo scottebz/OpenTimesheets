@@ -1,0 +1,94 @@
+﻿@inject IShiftRepository repository
+
+<div class="table-responsive-sm">
+    <table class="table table-bordered table-sm small">
+        <thead class="thead-dark">
+            <tr @onclick="(()=> EditShift())">
+                <th scope="col">Date</th>
+                <th scope="col">Start</th>
+                <th scope="col">Finish</th>
+                <th scope="col">Break</th>
+                <th scope="col">Hrs</th>
+                <th scope="col">Other</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="clickable">
+                <td class="small">Mon 08/02</td>
+                <td>08:15 AM</td>
+                <td>19:30 PM</td>
+                <td>0.5</td>
+                <td>7.6</td>
+                <td>....</td>
+            </tr>
+            <tr>
+                <td>Tue 09/02</td>
+                <td>08:15 AM</td>
+                <td>19:30 PM</td>
+                <td>0.5</td>
+                <td>7.6</td>
+                <td>....</td>
+            </tr>
+            <tr>
+                <td>Wed 10/02</td>
+                <td>08:15 AM</td>
+                <td>19:30 PM</td>
+                <td>0.5</td>
+                <td>7.6</td>
+                <td>....</td>
+            </tr>
+            <tr>
+                <td>Thu 11/02</td>
+                <td>08:15 AM</td>
+                <td>19:30 PM</td>
+                <td>0.5</td>
+                <td>7.6</td>
+                <td>....</td>
+            </tr>
+            <tr>
+                <td>Fri 12/02</td>
+                <td>08:15 AM</td>
+                <td>19:30 PM</td>
+                <td>0.5</td>
+                <td>7.6</td>
+                <td>....</td>
+            </tr>
+            <tr>
+                <td>Sat 13/02</td>
+                <td>08:15 AM</td>
+                <td>19:30 PM</td>
+                <td>0.5</td>
+                <td>7.6</td>
+                <td>....</td>
+            </tr>
+            <tr>
+                <td>Sun 14/02</td>
+                <td>08:15 AM</td>
+                <td>19:30 PM</td>
+                <td>0.5</td>
+                <td>7.6</td>
+                <td>....</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+
+@code{
+    [Parameter] public DateTime DateOfWeek { get; set; }
+
+    public WorkWeek 
+
+    private void EditShift()
+    {
+        Console.WriteLine("Clicked A row!");
+    }
+
+    protected async override Task OnInitializedAsync()
+    {
+
+    }
+
+    //https://www.codeply.com/p?starter=Bootstrap%204 
+
+}

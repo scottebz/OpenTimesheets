@@ -1,0 +1,42 @@
+﻿2 types of users.
+
+-- Type 1 --
+Simple user only need to record time worked each day for fairWork.
+Start, Finish, Break.
+Would benefit from displaying an editable week view
+
+
+-- Type 2 --
+Project costed user who needs to record (Type 1) as well as list of costed activities
+1: (Start, Finish, Break.)
+M: Project, Activity, Hrs
+Focus is on project allocation, so display signle WorkShift follow by 1 or more rows for ProjAllocation 
+
+Suggesting Data Objects
+
+- User -
+int Id
+String Username
+String JobType (Plumber, Builder, Drafter, etc) each of these may later have a cost/hr associated
+String DefaultJob
+String DefaultActivity
+
+- WorkShift -
+int Id
+String Username
+DateTime ShiftDate
+DateTime ShiftStart
+DateTime ShiftEnd
+decimal HrsElapsed
+decimal BreakHrs
+decimal NormHrs
+
+
+- ProjAllocation -
+int Id
+int WorkShiftFk
+string ProjectCode
+string Activity
+decimal hrs
+
+

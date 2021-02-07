@@ -1,0 +1,31 @@
+﻿@inject IShiftRepository repository
+
+<h4>DateSelection</h4>
+
+<EditForm Model="@ChosenDate">
+    <InputDate @bind-Value="@ChosenDate.dte" />
+
+</EditForm>
+
+<p>@ChosenDate.ToString()</p>
+
+@code {
+
+    private DateModel ChosenDate = new DateModel();
+
+    class DateModel
+    {
+        public DateTime? dte { get; set; }
+        public override string ToString()
+        {
+            if (dte.HasValue)
+            {
+                return dte.Value.ToString("yyyy-MM-dd");
+            }
+            else
+            {
+                return "no date";
+            }
+        }
+    }
+}
