@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,9 +20,18 @@ namespace OpenTimesheets.Shared.Entities
         public decimal HrsNorm { get; set; }
     }
 
-    public class WorkWeek
+    public class WorkWeek: IEnumerable<WorkShift>
     {
         public List<WorkShift> WorkShifts { get; set; } = new List<WorkShift>();
 
+        public IEnumerator<WorkShift> GetEnumerator()
+        {
+            return WorkShifts.GetEnumerator();
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return GetEnumerator();
+        }
     }
 }

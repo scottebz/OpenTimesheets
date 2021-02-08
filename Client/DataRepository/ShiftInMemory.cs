@@ -66,7 +66,7 @@ namespace OpenTimesheets.Client.DataRepository
                 workWeek.Add(GetWorkShift("", monday.AddDays(3)));
                 workWeek.Add(GetWorkShift("", monday.AddDays(4)));
                 workWeek.Add(GetWorkShift("", monday.AddDays(5)));
-                workWeek.Add(GetWorkShift("", monday.AddDays(7)));
+                workWeek.Add(GetWorkShift("", monday.AddDays(6)));
             }
             catch (Exception ex)
             {
