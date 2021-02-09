@@ -3,13 +3,13 @@
 <h4>DateSelection</h4>
 
 <EditForm Model="@ChosenDate">
-    <InputDate @bind-Value="@ChosenDate.dte" />
-
+    <InputDate @bind-Value="@ChosenDate.dte"  @onselectionchange="DateClicked"/>
 </EditForm>
 
 <p>@ChosenDate.ToString()</p>
 
 @code {
+    [Parameter] public EventCallback<string> OnDateClicked { get; set; }
 
     private DateModel ChosenDate = new DateModel();
 
@@ -24,8 +24,18 @@
             }
             else
             {
-                return "no date";
+                return "";
             }
         }
+    }
+
+
+    private Task DateClicked(EventArgs e)
+    {
+        Console.WriteLine("DateClicked....");
+        //return OnDateClicked.InvokeAsync(ChosenDate.dte);
+        return OnDateClicked.InvokeAsync(ChosenDate.dte.ToString());
+
+
     }
 }

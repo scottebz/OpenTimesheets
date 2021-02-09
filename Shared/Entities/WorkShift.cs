@@ -16,7 +16,7 @@ namespace OpenTimesheets.Shared.Entities
         public DateTime ShiftStart { get; set; }
         public DateTime ShiftEnd { get; set; }
         public decimal HrsElapsed { get; set; }
-        public decimal HrsBreak { get; set; }
+        public decimal HrsBreak { get; set; } 
         public decimal HrsNorm { get; set; }
     }
 
