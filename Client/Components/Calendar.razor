@@ -3,13 +3,16 @@
 <h4>DateSelection</h4>
 
 <EditForm Model="@ChosenDate">
-    <InputDate @bind-Value="@ChosenDate.dte"  @onselectionchange="DateClicked"/>
+    <InputDate @bind-Value="@ChosenDate.dte"  @onselectionchange="@InvokeParent"/>
+    <button class="btn btn-primary" @onclick="@InvokeParent">OK</button>
 </EditForm>
 
 <p>@ChosenDate.ToString()</p>
 
 @code {
-    [Parameter] public EventCallback<string> OnDateClicked { get; set; }
+    [Parameter] public  Action ParentMethod { get; set; }
+
+    //[Parameter] public EventCallback<string> OnDateClicked { get; set; }
 
     private DateModel ChosenDate = new DateModel();
 
@@ -30,12 +33,27 @@
     }
 
 
+    private void InvokeParent()
+    {
+        Console.WriteLine("Invoking Parent...");
+        ParentMethod?.Invoke();
+    }
+
+
+
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+
+    }
+
+    /*
     private Task DateClicked(EventArgs e)
     {
         Console.WriteLine("DateClicked....");
         //return OnDateClicked.InvokeAsync(ChosenDate.dte);
-        return OnDateClicked.InvokeAsync(ChosenDate.dte.ToString());
+        //return OnDateClicked.InvokeAsync(ChosenDate.dte.ToString());
 
 
-    }
+    }*/
 }

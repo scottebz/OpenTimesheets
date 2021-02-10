@@ -2,7 +2,7 @@
 @inject IShiftRepository repository
 
 <div>
-    <Calendar OnDateClicked="handleIt"/>
+    <Calendar ParentMethod="@SayHello"/>
 </div>
 
 <div>
@@ -10,13 +10,9 @@
 </div>
 
 @code{
-    private void ShowDate(DateTime? SelectedDate)
+    private void SayHello()
     {
-        Console.WriteLine(SelectedDate.ToString());
+        Console.WriteLine("Hello.");
     }
 
-    private void handleIt(string it)
-    {
-        Console.WriteLine(it);
-    }
 }
