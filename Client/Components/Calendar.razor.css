@@ -1,0 +1,203 @@
+﻿/* build your own custom Bootstrap theme:
+   https://themestr.app
+*/
+
+/* build your own custom Bootstrap theme:
+   https://themestr.app
+*/
+
+
+
+/*
+var(--min-width, 320px)
+$number-of-days: 7;
+$column-width: percentage(1/$number-of-days);
+*/
+
+.week {
+    /*height: 1vh;*/
+    /*width: 100%;*/
+    /*overflow: hidden;*/
+    /*border: 1px solid black;*/
+}
+
+    .week:hover * {
+        background-color: lightsteelblue;
+        /*border-top: 1px solid black;
+    border-bottom: 1px solid black;*/
+        cursor: pointer;
+        transition: .18s 0s ease-in-out;
+    }
+
+.change-month {
+    padding-top: 5%;
+    padding-bottom: 5%;
+    font-size: clamp(2.5rem,1.5vw, 4rem);
+}
+
+    .change-month:hover {
+        color: lightsteelblue;
+        cursor: pointer;
+    }
+
+.month-name {
+    /*font-size: clamp(1.2rem, 2vw, 2rem);*/
+    padding-top: 5%;
+    font-size: clamp(1.5rem, 2vw, 4rem);
+}
+
+.col {
+    /* border: 1px solid blue;*/
+}
+
+.col-2 {
+    padding: 0;
+}
+
+.col-8 {
+}
+
+.day-head {
+    font-size: clamp(0.8rem, 2vw, 1.2rem);
+    border-top: 1px solid silver;
+    border-left: 1px solid silver;
+    background-color: #696969;
+    color: white;
+    /*
+    display: inline-block;
+    min-height: 1px;
+    padding: 0;
+    justify-content: center;*/
+}
+
+.day-cell {
+    border-top: 1px solid silver;
+    border-left: 1px solid silver;
+    display: inline-block;
+    min-height: 1px;
+    padding: 0;
+    /*background-color: white;*/
+    /*position: relative;
+    text-align: right;*/
+}
+
+.day-cell-non-current {
+    background-color: #ebebeb;
+}
+
+
+.day-of-month {
+    /*background-color: red;*/
+    padding-right: 5%;
+    font-size: clamp(0.8rem, 2vw, 1.2rem);
+}
+
+.day-clock {
+    /*background-color: blue;*/
+    padding-left: 5%;
+    padding-bottom: 5%;
+    margin: 0;
+    font-size: clamp(0.7rem, 2vw, 0.85rem);
+}
+
+    .day-clock > div > i {
+        font-size: 1em;
+        /*color: red;*/
+    }
+
+.day-dollar {
+    padding-left: 5%;
+    padding-bottom: 5%;
+    padding-top: 10%;
+    margin: 0;
+    font-size: clamp(0.7rem, 2vw, 0.85rem);
+    /*font-size: 1.3vw;
+    font-size: max(1vw, 12px);*/
+    /*background-color: green;*/
+}
+
+    .day-dollar > div > i {
+        font-size: 1em;
+        color: grey;
+        /*color: red;*/
+    }
+
+.day-istoday {
+    background-color: red;
+    color: white;
+    padding-left: 5%;
+    padding-right: 5%;
+    border-radius: 25%;
+}
+
+.container-fluid {
+    max-width: 500px;
+    min-width: 300px;
+    /*margin: 0 auto;
+    padding: 0;*/
+    /*margin-left: auto;
+    margin-right: auto;
+    /*padding-bottom: 1em;*/
+    border: 1px solid black;
+}
+
+
+
+
+
+/*
+.grid-cell > div  {
+    padding-bottom: 40px;
+    height: auto;
+  }
+*/
+
+/*
+.grid-cell {
+    border: 1px solid blue;
+    display: inline-block;
+    /*float: left;*/
+/*
+    min-height: 1px;
+    padding: 0;
+    position: relative;
+    text-align: right;
+
+}
+
+
+ .grid-cell > div {
+	 display: flex;
+	 justify-content: center;
+	 width: 100%;
+	 background-color: green;
+   
+
+}
+ .grid-cell > div > span {
+	 height: 0;
+	 padding: 35% 0;
+	 background-color: yellow;
+   
+
+   /*
+        display:block;
+              position: absolute;
+   top: 5px;
+   right: 5px;
+        
+        border-radius:100%;
+        /*height:25px;
+        width:25px;*/
+/*text-align:center;
+
+}*/
+
+/*
+https://stackoverflow.com/questions/42160532/what-does-the-p-n-and-its-variants-represent-in-bootstrap-v4
+https://www.codeply.com/go/kaWaobOUD8
+https://caniuse.com/?search=css%20grid
+https://icons.getbootstrap.com/#icons
+https://www.w3schools.com/icons/icons_reference.asp
+
+*/
