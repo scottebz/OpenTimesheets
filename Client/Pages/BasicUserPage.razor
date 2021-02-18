@@ -2,7 +2,7 @@
 @inject IShiftRepository repository
 
 <div>
-    <Calendar ParentMethod="@SayHello"/>
+    <Calendar ParentMethod="@CalendarCallbackMethod"/>
 </div>
 
 <div>
@@ -10,9 +10,12 @@
 </div>
 
 @code{
-    private void SayHello()
+    private void CalendarCallbackMethod()
     {
         Console.WriteLine("Hello.");
     }
-
+    /*
+    https://docs.microsoft.com/en-us/aspnet/core/blazor/components/event-handling?view=aspnetcore-5.0
+    https://dev.to/petermilovcik/blazor-how-to-bind-table-row-data-to-button-click-2l3l
+        */
 }
