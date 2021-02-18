@@ -65,431 +65,436 @@
                 </div>
             </div>
         </div>
-        
-        @foreach(var calDay in myModel.CalDays)
+
+        @foreach (var calDay in myModel.CalDays)
         {
-
-            <div class="row week">
-                <div class="col day-cell day-cell-non-current" @onclick="InvokeParent">
-                    <div class="d-flex flex-row justify-content-end day-of-month">
-                        <div class="">@calDay.CalDay.ToString("dd")</div>
+            if (calDay.CalDay.DayOfWeek == DayOfWeek.Monday)
+            { 
+                <div class="row week">
+            }
+                    <div class="col day-cell day-cell-non-current" @onclick="InvokeParent">
+                        <div class="d-flex flex-row justify-content-end day-of-month">
+                            <div class="">@calDay.CalDay.ToString("dd")</div>
+                        </div>
+                        <div class="d-flex flex-row day-dollar">
+                            <div class=""> <i class="bi-tools"></i> @calDay.HrsAllocated.ToString()</div>
+                        </div>
+                        <div class="d-flex flex-row day-clock">
+                            <div class=""> <i class="bi-clock"></i> @calDay.HrsWorked.ToString()</div>
+                        </div>
                     </div>
-                    <div class="d-flex flex-row day-dollar">
-                        <div class=""> <i class="bi-tools"></i> @calDay.HrsAllocated.ToString()</div>
+             if (calDay.CalDay.DayOfWeek == DayOfWeek.Monday)
+                    {
                     </div>
-                    <div class="d-flex flex-row day-clock">
-                        <div class=""> <i class="bi-clock"></i> @calDay.HrsWorked.ToString()</div>
+                    }
+            }
+
+
+                    <div class="row week">
+                        <div class="col day-cell day-cell-non-current" @onclick="InvokeParent">
+                            <div class="d-flex flex-row justify-content-end day-of-month">
+                                <div class="">29</div>
+                            </div>
+                            <div class="d-flex flex-row day-dollar">
+                                <div class=""> <i class="bi-tools"></i> 8.25</div>
+                            </div>
+                            <div class="d-flex flex-row day-clock">
+                                <div class=""> <i class="bi-clock"></i> 7.55</div>
+                            </div>
+                        </div>
+                        <div class="col day-cell-non-current day-cell ">
+                            <div class="d-flex flex-row justify-content-end day-of-month">
+                                <div class="">30</div>
+                            </div>
+                            <div class="d-flex flex-row day-dollar">
+                                <div class=""> <i class="bi-tools"></i> 8.25</div>
+                            </div>
+                            <div class="d-flex flex-row day-clock">
+                                <div class=""> <i class="bi-clock"></i> 7.55</div>
+                            </div>
+                        </div>
+                        <div class="col day-cell day-cell-non-current">
+                            <div class="d-flex flex-row justify-content-end day-of-month">
+                                <div class="">31</div>
+                            </div>
+                            <div class="d-flex flex-row day-dollar">
+                                <div class=""> <i class="bi-tools"></i> 8.25</div>
+                            </div>
+                            <div class="d-flex flex-row day-clock">
+                                <div class=""> <i class="bi-clock"></i> 7.55</div>
+                            </div>
+                        </div>
+                        <div class="col day-cell">
+                            <div class="d-flex flex-row justify-content-end day-of-month">
+                                <div class="">1</div>
+                            </div>
+                            <div class="d-flex flex-row day-dollar">
+                                <div class=""> <i class="bi-tools"></i> 8.25</div>
+                            </div>
+                            <div class="d-flex flex-row day-clock">
+                                <div class=""> <i class="bi-clock"></i> 7.55</div>
+                            </div>
+                        </div>
+                        <div class="col day-cell">
+                            <div class="d-flex flex-row justify-content-end day-of-month">
+                                <div class="">2</div>
+                            </div>
+                            <div class="d-flex flex-row day-dollar">
+                                <div class=""> <i class="bi-tools"></i> 8.25</div>
+                            </div>
+                            <div class="d-flex flex-row day-clock">
+                                <div class=""> <i class="bi-clock"></i> 7.55</div>
+                            </div>
+                        </div>
+                        <div class="col day-cell">
+                            <div class="d-flex flex-row justify-content-end day-of-month">
+                                <div class="">3</div>
+                            </div>
+                            <div class="d-flex flex-row day-dollar">
+                                <div class=""> <i class="bi-tools"></i> 8.25</div>
+                            </div>
+                            <div class="d-flex flex-row day-clock">
+                                <div class=""> <i class="bi-clock"></i> 7.55</div>
+                            </div>
+                        </div>
+                        <div class="col day-cell">
+                            <div class="d-flex flex-row justify-content-end day-of-month">
+                                <div class="">4</div>
+                            </div>
+                            <div class="d-flex flex-row day-dollar">
+                                <div class=""> <i class="bi-tools"></i> 8.25</div>
+                            </div>
+                            <div class="d-flex flex-row day-clock">
+                                <div class=""> <i class="bi-clock"></i> 7.55</div>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
-        }
 
 
-        <div class="row week">
-            <div class="col day-cell day-cell-non-current" @onclick="InvokeParent">
-                <div class="d-flex flex-row justify-content-end day-of-month">
-                    <div class="">29</div>
-                </div>
-                <div class="d-flex flex-row day-dollar">
-                    <div class=""> <i class="bi-tools"></i> 8.25</div>
-                </div>
-                <div class="d-flex flex-row day-clock">
-                    <div class=""> <i class="bi-clock"></i> 7.55</div>
-                </div>
-            </div>
-            <div class="col day-cell-non-current day-cell ">
-                <div class="d-flex flex-row justify-content-end day-of-month">
-                    <div class="">30</div>
-                </div>
-                <div class="d-flex flex-row day-dollar">
-                    <div class=""> <i class="bi-tools"></i> 8.25</div>
-                </div>
-                <div class="d-flex flex-row day-clock">
-                    <div class=""> <i class="bi-clock"></i> 7.55</div>
-                </div>
-            </div>
-            <div class="col day-cell day-cell-non-current">
-                <div class="d-flex flex-row justify-content-end day-of-month">
-                    <div class="">31</div>
-                </div>
-                <div class="d-flex flex-row day-dollar">
-                    <div class=""> <i class="bi-tools"></i> 8.25</div>
-                </div>
-                <div class="d-flex flex-row day-clock">
-                    <div class=""> <i class="bi-clock"></i> 7.55</div>
-                </div>
-            </div>
-            <div class="col day-cell">
-                <div class="d-flex flex-row justify-content-end day-of-month">
-                    <div class="">1</div>
-                </div>
-                <div class="d-flex flex-row day-dollar">
-                    <div class=""> <i class="bi-tools"></i> 8.25</div>
-                </div>
-                <div class="d-flex flex-row day-clock">
-                    <div class=""> <i class="bi-clock"></i> 7.55</div>
-                </div>
-            </div>
-            <div class="col day-cell">
-                <div class="d-flex flex-row justify-content-end day-of-month">
-                    <div class="">2</div>
-                </div>
-                <div class="d-flex flex-row day-dollar">
-                    <div class=""> <i class="bi-tools"></i> 8.25</div>
-                </div>
-                <div class="d-flex flex-row day-clock">
-                    <div class=""> <i class="bi-clock"></i> 7.55</div>
-                </div>
-            </div>
-            <div class="col day-cell">
-                <div class="d-flex flex-row justify-content-end day-of-month">
-                    <div class="">3</div>
-                </div>
-                <div class="d-flex flex-row day-dollar">
-                    <div class=""> <i class="bi-tools"></i> 8.25</div>
-                </div>
-                <div class="d-flex flex-row day-clock">
-                    <div class=""> <i class="bi-clock"></i> 7.55</div>
-                </div>
-            </div>
-            <div class="col day-cell">
-                <div class="d-flex flex-row justify-content-end day-of-month">
-                    <div class="">4</div>
-                </div>
-                <div class="d-flex flex-row day-dollar">
-                    <div class=""> <i class="bi-tools"></i> 8.25</div>
-                </div>
-                <div class="d-flex flex-row day-clock">
-                    <div class=""> <i class="bi-clock"></i> 7.55</div>
-                </div>
-            </div>
-        </div>
+                    <div class="row week">
+                        <div class="col day-cell">
+                            <div class="d-flex flex-row justify-content-end day-of-month">
+                                <div class="">5</div>
+                            </div>
+                            <div class="d-flex flex-row day-dollar">
+                                <div class=""> <i class="bi-tools"></i> 8.25</div>
+                            </div>
+                            <div class="d-flex flex-row day-clock">
+                                <div class=""> <i class="bi-clock"></i> 7.55</div>
+                            </div>
+                        </div>
+                        <div class="col day-cell">
+                            <div class="d-flex flex-row justify-content-end day-of-month">
+                                <div class="day-istoday">6</div>
+                            </div>
+                            <div class="d-flex flex-row day-dollar">
+                                <div class=""> <i class="bi-tools"></i> 8.25</div>
+                            </div>
+                            <div class="d-flex flex-row day-clock">
+                                <div class=""> <i class="bi-clock"></i> 7.55</div>
+                            </div>
+                        </div>
+                        <div class="col day-cell">
+                            <div class="d-flex flex-row justify-content-end day-of-month">
+                                <div class="">7</div>
+                            </div>
+                            <div class="d-flex flex-row day-dollar">
+                                <div class=""> <i class="bi-tools"></i> 8.25</div>
+                            </div>
+                            <div class="d-flex flex-row day-clock">
+                                <div class=""> <i class="bi-clock"></i> 7.55</div>
+                            </div>
+                        </div>
+                        <div class="col day-cell">
+                            <div class="d-flex flex-row justify-content-end day-of-month">
+                                <div class="">8</div>
+                            </div>
+                            <div class="d-flex flex-row day-dollar">
+                                <div class=""> <i class="bi-tools"></i> 8.25</div>
+                            </div>
+                            <div class="d-flex flex-row day-clock">
+                                <div class=""> <i class="bi-clock"></i> 7.55</div>
+                            </div>
+                        </div>
+                        <div class="col day-cell">
+                            <div class="d-flex flex-row justify-content-end day-of-month">
+                                <div class="">9</div>
+                            </div>
+                            <div class="d-flex flex-row day-dollar">
+                                <div class=""> <i class="bi-tools"></i> 8.25</div>
+                            </div>
+                            <div class="d-flex flex-row day-clock">
+                                <div class=""> <i class="bi-clock"></i> 7.55</div>
+                            </div>
+                        </div>
+                        <div class="col day-cell">
+                            <div class="d-flex flex-row justify-content-end day-of-month">
+                                <div class="">10</div>
+                            </div>
+                            <div class="d-flex flex-row day-dollar">
+                                <div class=""> <i class="bi-tools"></i> 8.25</div>
+                            </div>
+                            <div class="d-flex flex-row day-clock">
+                                <div class=""> <i class="bi-clock"></i> 7.55</div>
+                            </div>
+                        </div>
+                        <div class="col day-cell">
+                            <div class="d-flex flex-row justify-content-end day-of-month">
+                                <div class="">11</div>
+                            </div>
+                            <div class="d-flex flex-row day-dollar">
+                                <div class=""> <i class="bi-tools"></i> 8.25</div>
+                            </div>
+                            <div class="d-flex flex-row day-clock">
+                                <div class=""> <i class="bi-clock"></i> 7.55</div>
+                            </div>
+                        </div>
+                    </div>
 
 
-        <div class="row week">
-            <div class="col day-cell">
-                <div class="d-flex flex-row justify-content-end day-of-month">
-                    <div class="">5</div>
-                </div>
-                <div class="d-flex flex-row day-dollar">
-                    <div class=""> <i class="bi-tools"></i> 8.25</div>
-                </div>
-                <div class="d-flex flex-row day-clock">
-                    <div class=""> <i class="bi-clock"></i> 7.55</div>
-                </div>
-            </div>
-            <div class="col day-cell">
-                <div class="d-flex flex-row justify-content-end day-of-month">
-                    <div class="day-istoday">6</div>
-                </div>
-                <div class="d-flex flex-row day-dollar">
-                    <div class=""> <i class="bi-tools"></i> 8.25</div>
-                </div>
-                <div class="d-flex flex-row day-clock">
-                    <div class=""> <i class="bi-clock"></i> 7.55</div>
-                </div>
-            </div>
-            <div class="col day-cell">
-                <div class="d-flex flex-row justify-content-end day-of-month">
-                    <div class="">7</div>
-                </div>
-                <div class="d-flex flex-row day-dollar">
-                    <div class=""> <i class="bi-tools"></i> 8.25</div>
-                </div>
-                <div class="d-flex flex-row day-clock">
-                    <div class=""> <i class="bi-clock"></i> 7.55</div>
-                </div>
-            </div>
-            <div class="col day-cell">
-                <div class="d-flex flex-row justify-content-end day-of-month">
-                    <div class="">8</div>
-                </div>
-                <div class="d-flex flex-row day-dollar">
-                    <div class=""> <i class="bi-tools"></i> 8.25</div>
-                </div>
-                <div class="d-flex flex-row day-clock">
-                    <div class=""> <i class="bi-clock"></i> 7.55</div>
-                </div>
-            </div>
-            <div class="col day-cell">
-                <div class="d-flex flex-row justify-content-end day-of-month">
-                    <div class="">9</div>
-                </div>
-                <div class="d-flex flex-row day-dollar">
-                    <div class=""> <i class="bi-tools"></i> 8.25</div>
-                </div>
-                <div class="d-flex flex-row day-clock">
-                    <div class=""> <i class="bi-clock"></i> 7.55</div>
-                </div>
-            </div>
-            <div class="col day-cell">
-                <div class="d-flex flex-row justify-content-end day-of-month">
-                    <div class="">10</div>
-                </div>
-                <div class="d-flex flex-row day-dollar">
-                    <div class=""> <i class="bi-tools"></i> 8.25</div>
-                </div>
-                <div class="d-flex flex-row day-clock">
-                    <div class=""> <i class="bi-clock"></i> 7.55</div>
-                </div>
-            </div>
-            <div class="col day-cell">
-                <div class="d-flex flex-row justify-content-end day-of-month">
-                    <div class="">11</div>
-                </div>
-                <div class="d-flex flex-row day-dollar">
-                    <div class=""> <i class="bi-tools"></i> 8.25</div>
-                </div>
-                <div class="d-flex flex-row day-clock">
-                    <div class=""> <i class="bi-clock"></i> 7.55</div>
-                </div>
-            </div>
-        </div>
+                    <div class="row week">
+                        <div class="col day-cell">
+                            <div class="d-flex flex-row justify-content-end day-of-month">
+                                <div class="">12</div>
+                            </div>
+                            <div class="d-flex flex-row day-dollar">
+                                <div class=""> <i class="bi-tools"></i> 8.25</div>
+                            </div>
+                            <div class="d-flex flex-row day-clock">
+                                <div class=""> <i class="bi-clock"></i> 7.55</div>
+                            </div>
+                        </div>
+                        <div class="col day-cell">
+                            <div class="d-flex flex-row justify-content-end day-of-month">
+                                <div class="">13</div>
+                            </div>
+                            <div class="d-flex flex-row day-dollar">
+                                <div class=""> <i class="bi-tools"></i> 8.25</div>
+                            </div>
+                            <div class="d-flex flex-row day-clock">
+                                <div class=""> <i class="bi-clock"></i> 7.55</div>
+                            </div>
+                        </div>
+                        <div class="col day-cell">
+                            <div class="d-flex flex-row justify-content-end day-of-month">
+                                <div class="">14</div>
+                            </div>
+                            <div class="d-flex flex-row day-dollar">
+                                <div class=""> <i class="bi-tools"></i> 8.25</div>
+                            </div>
+                            <div class="d-flex flex-row day-clock">
+                                <div class=""> <i class="bi-clock"></i> 7.55</div>
+                            </div>
+                        </div>
+                        <div class="col day-cell">
+                            <div class="d-flex flex-row justify-content-end day-of-month">
+                                <div class="">15</div>
+                            </div>
+                            <div class="d-flex flex-row day-dollar">
+                                <div class=""> <i class="bi-tools"></i> 8.25</div>
+                            </div>
+                            <div class="d-flex flex-row day-clock">
+                                <div class=""> <i class="bi-clock"></i> 7.55</div>
+                            </div>
+                        </div>
+                        <div class="col day-cell">
+                            <div class="d-flex flex-row justify-content-end day-of-month">
+                                <div class="">16</div>
+                            </div>
+                            <div class="d-flex flex-row day-dollar">
+                                <div class=""> <i class="bi-tools"></i> 8.25</div>
+                            </div>
+                            <div class="d-flex flex-row day-clock">
+                                <div class=""> <i class="bi-clock"></i> 7.55</div>
+                            </div>
+                        </div>
+                        <div class="col day-cell">
+                            <div class="d-flex flex-row justify-content-end day-of-month">
+                                <div class="">17</div>
+                            </div>
+                            <div class="d-flex flex-row day-dollar">
+                                <div class=""> <i class="bi-tools"></i> 8.25</div>
+                            </div>
+                            <div class="d-flex flex-row day-clock">
+                                <div class=""> <i class="bi-clock"></i> 7.55</div>
+                            </div>
+                        </div>
+                        <div class="col day-cell">
+                            <div class="d-flex flex-row justify-content-end day-of-month">
+                                <div class="">18</div>
+                            </div>
+                            <div class="d-flex flex-row day-dollar">
+                                <div class=""> <i class="bi-tools"></i> 8.25</div>
+                            </div>
+                            <div class="d-flex flex-row day-clock">
+                                <div class=""> <i class="bi-clock"></i> 7.55</div>
+                            </div>
+                        </div>
+                    </div>
 
 
-        <div class="row week">
-            <div class="col day-cell">
-                <div class="d-flex flex-row justify-content-end day-of-month">
-                    <div class="">12</div>
-                </div>
-                <div class="d-flex flex-row day-dollar">
-                    <div class=""> <i class="bi-tools"></i> 8.25</div>
-                </div>
-                <div class="d-flex flex-row day-clock">
-                    <div class=""> <i class="bi-clock"></i> 7.55</div>
-                </div>
-            </div>
-            <div class="col day-cell">
-                <div class="d-flex flex-row justify-content-end day-of-month">
-                    <div class="">13</div>
-                </div>
-                <div class="d-flex flex-row day-dollar">
-                    <div class=""> <i class="bi-tools"></i> 8.25</div>
-                </div>
-                <div class="d-flex flex-row day-clock">
-                    <div class=""> <i class="bi-clock"></i> 7.55</div>
-                </div>
-            </div>
-            <div class="col day-cell">
-                <div class="d-flex flex-row justify-content-end day-of-month">
-                    <div class="">14</div>
-                </div>
-                <div class="d-flex flex-row day-dollar">
-                    <div class=""> <i class="bi-tools"></i> 8.25</div>
-                </div>
-                <div class="d-flex flex-row day-clock">
-                    <div class=""> <i class="bi-clock"></i> 7.55</div>
-                </div>
-            </div>
-            <div class="col day-cell">
-                <div class="d-flex flex-row justify-content-end day-of-month">
-                    <div class="">15</div>
-                </div>
-                <div class="d-flex flex-row day-dollar">
-                    <div class=""> <i class="bi-tools"></i> 8.25</div>
-                </div>
-                <div class="d-flex flex-row day-clock">
-                    <div class=""> <i class="bi-clock"></i> 7.55</div>
-                </div>
-            </div>
-            <div class="col day-cell">
-                <div class="d-flex flex-row justify-content-end day-of-month">
-                    <div class="">16</div>
-                </div>
-                <div class="d-flex flex-row day-dollar">
-                    <div class=""> <i class="bi-tools"></i> 8.25</div>
-                </div>
-                <div class="d-flex flex-row day-clock">
-                    <div class=""> <i class="bi-clock"></i> 7.55</div>
-                </div>
-            </div>
-            <div class="col day-cell">
-                <div class="d-flex flex-row justify-content-end day-of-month">
-                    <div class="">17</div>
-                </div>
-                <div class="d-flex flex-row day-dollar">
-                    <div class=""> <i class="bi-tools"></i> 8.25</div>
-                </div>
-                <div class="d-flex flex-row day-clock">
-                    <div class=""> <i class="bi-clock"></i> 7.55</div>
-                </div>
-            </div>
-            <div class="col day-cell">
-                <div class="d-flex flex-row justify-content-end day-of-month">
-                    <div class="">18</div>
-                </div>
-                <div class="d-flex flex-row day-dollar">
-                    <div class=""> <i class="bi-tools"></i> 8.25</div>
-                </div>
-                <div class="d-flex flex-row day-clock">
-                    <div class=""> <i class="bi-clock"></i> 7.55</div>
-                </div>
-            </div>
-        </div>
+                    <div class="row week">
+                        <div class="col day-cell">
+                            <div class="d-flex flex-row justify-content-end day-of-month">
+                                <div class="">19</div>
+                            </div>
+                            <div class="d-flex flex-row day-dollar">
+                                <div class=""> <i class="bi-tools"></i> 8.25</div>
+                            </div>
+                            <div class="d-flex flex-row day-clock">
+                                <div class=""> <i class="bi-clock"></i> 7.55</div>
+                            </div>
+                        </div>
+                        <div class="col day-cell">
+                            <div class="d-flex flex-row justify-content-end day-of-month">
+                                <div class="">20</div>
+                            </div>
+                            <div class="d-flex flex-row day-dollar">
+                                <div class=""> <i class="bi-tools"></i> 8.25</div>
+                            </div>
+                            <div class="d-flex flex-row day-clock">
+                                <div class=""> <i class="bi-clock"></i> 7.55</div>
+                            </div>
+                        </div>
+                        <div class="col day-cell">
+                            <div class="d-flex flex-row justify-content-end day-of-month">
+                                <div class="">21</div>
+                            </div>
+                            <div class="d-flex flex-row day-dollar">
+                                <div class=""> <i class="bi-tools"></i> 8.25</div>
+                            </div>
+                            <div class="d-flex flex-row day-clock">
+                                <div class=""> <i class="bi-clock"></i> 7.55</div>
+                            </div>
+                        </div>
+                        <div class="col day-cell">
+                            <div class="d-flex flex-row justify-content-end day-of-month">
+                                <div class="">22</div>
+                            </div>
+                            <div class="d-flex flex-row day-dollar">
+                                <div class=""> <i class="bi-tools"></i> 8.25</div>
+                            </div>
+                            <div class="d-flex flex-row day-clock">
+                                <div class=""> <i class="bi-clock"></i> 7.55</div>
+                            </div>
+                        </div>
+                        <div class="col day-cell">
+                            <div class="d-flex flex-row justify-content-end day-of-month">
+                                <div class="">23</div>
+                            </div>
+                            <div class="d-flex flex-row day-dollar">
+                                <div class=""> <i class="bi-tools"></i> 8.25</div>
+                            </div>
+                            <div class="d-flex flex-row day-clock">
+                                <div class=""> <i class="bi-clock"></i> 7.55</div>
+                            </div>
+                        </div>
+                        <div class="col day-cell">
+                            <div class="d-flex flex-row justify-content-end day-of-month">
+                                <div class="">24</div>
+                            </div>
+                            <div class="d-flex flex-row day-dollar">
+                                <div class=""> <i class="bi-tools"></i> 8.25</div>
+                            </div>
+                            <div class="d-flex flex-row day-clock">
+                                <div class=""> <i class="bi-clock"></i> 7.55</div>
+                            </div>
+                        </div>
+                        <div class="col day-cell">
+                            <div class="d-flex flex-row justify-content-end day-of-month">
+                                <div class="">25</div>
+                            </div>
+                            <div class="d-flex flex-row day-dollar">
+                                <div class=""> <i class="bi-tools"></i> 8.25</div>
+                            </div>
+                            <div class="d-flex flex-row day-clock">
+                                <div class=""> <i class="bi-clock"></i> 7.55</div>
+                            </div>
+                        </div>
+                    </div>
 
 
-        <div class="row week">
-            <div class="col day-cell">
-                <div class="d-flex flex-row justify-content-end day-of-month">
-                    <div class="">19</div>
-                </div>
-                <div class="d-flex flex-row day-dollar">
-                    <div class=""> <i class="bi-tools"></i> 8.25</div>
-                </div>
-                <div class="d-flex flex-row day-clock">
-                    <div class=""> <i class="bi-clock"></i> 7.55</div>
-                </div>
-            </div>
-            <div class="col day-cell">
-                <div class="d-flex flex-row justify-content-end day-of-month">
-                    <div class="">20</div>
-                </div>
-                <div class="d-flex flex-row day-dollar">
-                    <div class=""> <i class="bi-tools"></i> 8.25</div>
-                </div>
-                <div class="d-flex flex-row day-clock">
-                    <div class=""> <i class="bi-clock"></i> 7.55</div>
-                </div>
-            </div>
-            <div class="col day-cell">
-                <div class="d-flex flex-row justify-content-end day-of-month">
-                    <div class="">21</div>
-                </div>
-                <div class="d-flex flex-row day-dollar">
-                    <div class=""> <i class="bi-tools"></i> 8.25</div>
-                </div>
-                <div class="d-flex flex-row day-clock">
-                    <div class=""> <i class="bi-clock"></i> 7.55</div>
-                </div>
-            </div>
-            <div class="col day-cell">
-                <div class="d-flex flex-row justify-content-end day-of-month">
-                    <div class="">22</div>
-                </div>
-                <div class="d-flex flex-row day-dollar">
-                    <div class=""> <i class="bi-tools"></i> 8.25</div>
-                </div>
-                <div class="d-flex flex-row day-clock">
-                    <div class=""> <i class="bi-clock"></i> 7.55</div>
-                </div>
-            </div>
-            <div class="col day-cell">
-                <div class="d-flex flex-row justify-content-end day-of-month">
-                    <div class="">23</div>
-                </div>
-                <div class="d-flex flex-row day-dollar">
-                    <div class=""> <i class="bi-tools"></i> 8.25</div>
-                </div>
-                <div class="d-flex flex-row day-clock">
-                    <div class=""> <i class="bi-clock"></i> 7.55</div>
-                </div>
-            </div>
-            <div class="col day-cell">
-                <div class="d-flex flex-row justify-content-end day-of-month">
-                    <div class="">24</div>
-                </div>
-                <div class="d-flex flex-row day-dollar">
-                    <div class=""> <i class="bi-tools"></i> 8.25</div>
-                </div>
-                <div class="d-flex flex-row day-clock">
-                    <div class=""> <i class="bi-clock"></i> 7.55</div>
-                </div>
-            </div>
-            <div class="col day-cell">
-                <div class="d-flex flex-row justify-content-end day-of-month">
-                    <div class="">25</div>
-                </div>
-                <div class="d-flex flex-row day-dollar">
-                    <div class=""> <i class="bi-tools"></i> 8.25</div>
-                </div>
-                <div class="d-flex flex-row day-clock">
-                    <div class=""> <i class="bi-clock"></i> 7.55</div>
-                </div>
-            </div>
-        </div>
+                    <div class="row week">
+                        <div class="col day-cell">
+                            <div class="d-flex flex-row justify-content-end day-of-month">
+                                <div class="">26</div>
+                            </div>
+                            <div class="d-flex flex-row day-dollar">
+                                <div class=""> <i class="bi-tools"></i> 8.25</div>
+                            </div>
+                            <div class="d-flex flex-row day-clock">
+                                <div class=""> <i class="bi-clock"></i> 7.55</div>
+                            </div>
+                        </div>
+                        <div class="col day-cell">
+                            <div class="d-flex flex-row justify-content-end day-of-month">
+                                <div class="">27</div>
+                            </div>
+                            <div class="d-flex flex-row day-dollar">
+                                <div class=""> <i class="bi-tools"></i> 8.25</div>
+                            </div>
+                            <div class="d-flex flex-row day-clock">
+                                <div class=""> <i class="bi-clock"></i> 7.55</div>
+                            </div>
+                        </div>
+                        <div class="col day-cell">
+                            <div class="d-flex flex-row justify-content-end day-of-month">
+                                <div class="">28</div>
+                            </div>
+                            <div class="d-flex flex-row day-dollar">
+                                <div class=""> <i class="bi-tools"></i> 8.25</div>
+                            </div>
+                            <div class="d-flex flex-row day-clock">
+                                <div class=""> <i class="bi-clock"></i> 7.55</div>
+                            </div>
+                        </div>
+                        <div class="col day-cell">
+                            <div class="d-flex flex-row justify-content-end day-of-month">
+                                <div class="">29</div>
+                            </div>
+                            <div class="d-flex flex-row day-dollar">
+                                <div class=""> <i class="bi-tools"></i> 8.25</div>
+                            </div>
+                            <div class="d-flex flex-row day-clock">
+                                <div class=""> <i class="bi-clock"></i> 7.55</div>
+                            </div>
+                        </div>
+                        <div class="col day-cell">
+                            <div class="d-flex flex-row justify-content-end day-of-month">
+                                <div class="">30</div>
+                            </div>
+                            <div class="d-flex flex-row day-dollar">
+                                <div class=""> <i class="bi-tools"></i> 8.25</div>
+                            </div>
+                            <div class="d-flex flex-row day-clock">
+                                <div class=""> <i class="bi-clock"></i> 7.55</div>
+                            </div>
+                        </div>
+                        <div class="col day-cell day-cell-non-current">
+                            <div class="d-flex flex-row justify-content-end day-of-month">
+                                <div class="">1</div>
+                            </div>
+                            <div class="d-flex flex-row day-dollar">
+                                <div class=""> <i class="bi-tools"></i> 8.25</div>
+                            </div>
+                            <div class="d-flex flex-row day-clock">
+                                <div class=""> <i class="bi-clock"></i> 7.55</div>
+                            </div>
+                        </div>
+                        <div class="col day-cell day-cell-non-current">
+                            <div class="d-flex flex-row justify-content-end day-of-month">
+                                <div class="">2</div>
+                            </div>
+                            <div class="d-flex flex-row day-dollar">
+                                <div class=""> <i class="bi-tools"></i> 8.25</div>
+                            </div>
+                            <div class="d-flex flex-row day-clock">
+                                <div class=""> <i class="bi-clock"></i> 7.55</div>
+                            </div>
+                        </div>
+                    </div>
 
-
-        <div class="row week">
-            <div class="col day-cell">
-                <div class="d-flex flex-row justify-content-end day-of-month">
-                    <div class="">26</div>
                 </div>
-                <div class="d-flex flex-row day-dollar">
-                    <div class=""> <i class="bi-tools"></i> 8.25</div>
-                </div>
-                <div class="d-flex flex-row day-clock">
-                    <div class=""> <i class="bi-clock"></i> 7.55</div>
-                </div>
-            </div>
-            <div class="col day-cell">
-                <div class="d-flex flex-row justify-content-end day-of-month">
-                    <div class="">27</div>
-                </div>
-                <div class="d-flex flex-row day-dollar">
-                    <div class=""> <i class="bi-tools"></i> 8.25</div>
-                </div>
-                <div class="d-flex flex-row day-clock">
-                    <div class=""> <i class="bi-clock"></i> 7.55</div>
-                </div>
-            </div>
-            <div class="col day-cell">
-                <div class="d-flex flex-row justify-content-end day-of-month">
-                    <div class="">28</div>
-                </div>
-                <div class="d-flex flex-row day-dollar">
-                    <div class=""> <i class="bi-tools"></i> 8.25</div>
-                </div>
-                <div class="d-flex flex-row day-clock">
-                    <div class=""> <i class="bi-clock"></i> 7.55</div>
-                </div>
-            </div>
-            <div class="col day-cell">
-                <div class="d-flex flex-row justify-content-end day-of-month">
-                    <div class="">29</div>
-                </div>
-                <div class="d-flex flex-row day-dollar">
-                    <div class=""> <i class="bi-tools"></i> 8.25</div>
-                </div>
-                <div class="d-flex flex-row day-clock">
-                    <div class=""> <i class="bi-clock"></i> 7.55</div>
-                </div>
-            </div>
-            <div class="col day-cell">
-                <div class="d-flex flex-row justify-content-end day-of-month">
-                    <div class="">30</div>
-                </div>
-                <div class="d-flex flex-row day-dollar">
-                    <div class=""> <i class="bi-tools"></i> 8.25</div>
-                </div>
-                <div class="d-flex flex-row day-clock">
-                    <div class=""> <i class="bi-clock"></i> 7.55</div>
-                </div>
-            </div>
-            <div class="col day-cell day-cell-non-current">
-                <div class="d-flex flex-row justify-content-end day-of-month">
-                    <div class="">1</div>
-                </div>
-                <div class="d-flex flex-row day-dollar">
-                    <div class=""> <i class="bi-tools"></i> 8.25</div>
-                </div>
-                <div class="d-flex flex-row day-clock">
-                    <div class=""> <i class="bi-clock"></i> 7.55</div>
-                </div>
-            </div>
-            <div class="col day-cell day-cell-non-current">
-                <div class="d-flex flex-row justify-content-end day-of-month">
-                    <div class="">2</div>
-                </div>
-                <div class="d-flex flex-row day-dollar">
-                    <div class=""> <i class="bi-tools"></i> 8.25</div>
-                </div>
-                <div class="d-flex flex-row day-clock">
-                    <div class=""> <i class="bi-clock"></i> 7.55</div>
-                </div>
-            </div>
-        </div>
-
-    </div>
     <br>
         }
 
@@ -509,192 +514,194 @@
         -->
     @code {
         [Parameter] public Action ParentMethod { get; set; }
-//https://www.pragimtech.com/blog/blazor/blazor-data-binding/
+        //https://www.pragimtech.com/blog/blazor/blazor-data-binding/
+        //https://blazor-university.com/templating-components-with-renderfragements/
+        //https://www.yogihosting.com/blazor-lifecycle/
 
         //[Parameter] public EventCallback<string> OnDateClicked { get; set; }
 
-    private CalendarModel myModel = new CalendarModel();
-    class CalendarModel
-    {
-        public List<CalDayData> CalDays { get; set; }
-    }
-
-    /*
-
-    private DateModel ChosenDate = new DateModel();
-
-    class DateModel
-    {
-        public DateTime? dte { get; set; }
-        public override string ToString()
+        private CalendarModel myModel = new CalendarModel();
+        class CalendarModel
         {
-            if (dte.HasValue)
+            public List<CalDayData> CalDays { get; set; }
+        }
+
+        /*
+
+        private DateModel ChosenDate = new DateModel();
+
+        class DateModel
+        {
+            public DateTime? dte { get; set; }
+            public override string ToString()
             {
-                return dte.Value.ToString("yyyy-MM-dd");
+                if (dte.HasValue)
+                {
+                    return dte.Value.ToString("yyyy-MM-dd");
+                }
+                else
+                {
+                    return "";
+                }
             }
-            else
-            {
-                return "";
-            }
         }
-    }
-    */
-
-    private void InvokeParent()
-    {
-        Console.WriteLine("Invoking Parent...");
-        ParentMethod?.Invoke();
-    }
-
-
-
-    protected async override Task OnInitializedAsync()
-    {
-        await Task.Delay(2000);
-
-        //displayWeek = repository.GetWorkWeek("GordonFreeman", DateTime.Now);
-        List<CalDayData> calDays = repository.GetCalendarViewData("GordonF", DateTime.Now);
-        myModel.CalDays = calDays;
-        //this.StateHasChanged();
-    }
-
-    /*
-    private Task DateClicked(EventArgs e)
-    {
-        Console.WriteLine("DateClicked....");
-        //return OnDateClicked.InvokeAsync(ChosenDate.dte);
-        //return OnDateClicked.InvokeAsync(ChosenDate.dte.ToString());
-
-
-    }*/
-
-
-    /*
-     protected void Button1_Click(object sender, EventArgs e)
-  {
-    string month = txtMonth.Text;// should be in the format of Jan, Feb, Mar, Apr, etc...
-    int yearofMonth = Convert.ToInt32(txtYear.Text);
-    DateTime dateTime = Convert.ToDateTime("01-" + month + "-" + yearofMonth);
-    DataRow dr;
-    DataTable dt = new DataTable();
-    dt.Columns.Add("Monday");
-    dt.Columns.Add("Tuesday");
-    dt.Columns.Add("Wednesday");
-    dt.Columns.Add("Thursday");
-    dt.Columns.Add("Friday");
-    dr = dt.NewRow();
-    for (int i = 0; i < DateTime.DaysInMonth(dateTime.Year, dateTime.Month); i += 1)
-    {
-        txtMonth.Text = Convert.ToDateTime(dateTime.AddDays(0)).ToString("dddd");
-        if (Convert.ToDateTime(dateTime.AddDays(i)).ToString("dddd") == "Monday")
-        {
-            dr["Monday"] = i + 1;
-        }
-        if (dateTime.AddDays(i).ToString("dddd") == "Tuesday")
-        {
-            dr["Tuesday"] = i + 1;
-        }
-        if (dateTime.AddDays(i).ToString("dddd") == "Wednesday")
-        {
-            dr["Wednesday"] = i + 1;
-
-        }
-        if (dateTime.AddDays(i).ToString("dddd") == "Thursday")
-        {
-            dr["Thursday"] = i + 1;
-        }
-        if (dateTime.AddDays(i).ToString("dddd") == "Friday")
-        {
-            dr["Friday"] = i + 1;
-            dt.Rows.Add(dr);
-            dr = dt.NewRow();
-            continue;
-        }
-        if (i == DateTime.DaysInMonth(dateTime.Year, dateTime.Month) - 1)
-        {
-            dt.Rows.Add(dr);
-            dr = dt.NewRow();
-
-        }
-    https://codepen.io/marcobiedermann/pen/rClpv
-    }
-
-    GridView1.DataSource = dt;
-    GridView1.DataBind();
-
-  }
-}
-    https://jsfiddle.net/ut0xqnh5/1/
-
-<div>
-
-</div>
-<br>
-April 2021
-<div>
-<table>
-<thead>
-  <tr>
-    <th>Mon</th>
-    <th>Tue</th>
-    <th>Wed</th>
-    <th>Thu</th>
-    <th>Fri</th>
-    <th>Sat</th>
-    <th>Sun</th>
-  </tr>
-</thead>
-<tbody>
-  <tr>
-    <td>29</td>
-    <td>30</td>
-    <td>31</td>
-    <td>1</td>
-    <td>2</td>
-    <td>3</td>
-    <td>4</td>
-  </tr>
-  <tr>
-    <td>5</td>
-    <td>6</td>
-    <td>7</td>
-    <td>8</td>
-    <td>9</td>
-    <td>10</td>
-    <td>11</td>
-  </tr>
-  <tr>
-    <td>12</td>
-    <td>13</td>
-    <td>14</td>
-    <td>15</td>
-    <td>6</td>
-    <td>7</td>
-    <td>18</td>
-  </tr>
-  <tr>
-    <td>19</td>
-    <td>20</td>
-    <td>21</td>
-    <td>22</td>
-    <td>23</td>
-    <td>24</td>
-    <td>25</td>
-  </tr>
-  <tr>
-    <td>26</td>
-    <td>27</td>
-    <td>28</td>
-    <td>29</td>
-    <td>30</td>
-    <td>1</td>
-    <td>2</td>
-  </tr>
-</tbody>
-
-</table>
-</div>
-
-
         */
+
+        private void InvokeParent()
+        {
+            Console.WriteLine("Invoking Parent...");
+            ParentMethod?.Invoke();
+        }
+
+
+
+        protected async override Task OnInitializedAsync()
+        {
+            await Task.Delay(2000);
+
+            //displayWeek = repository.GetWorkWeek("GordonFreeman", DateTime.Now);
+            List<CalDayData> calDays = repository.GetCalendarViewData("GordonF", DateTime.Now);
+            myModel.CalDays = calDays;
+            //this.StateHasChanged();
+        }
+
+        /*
+        private Task DateClicked(EventArgs e)
+        {
+            Console.WriteLine("DateClicked....");
+            //return OnDateClicked.InvokeAsync(ChosenDate.dte);
+            //return OnDateClicked.InvokeAsync(ChosenDate.dte.ToString());
+
+
+        }*/
+
+
+        /*
+         protected void Button1_Click(object sender, EventArgs e)
+      {
+        string month = txtMonth.Text;// should be in the format of Jan, Feb, Mar, Apr, etc...
+        int yearofMonth = Convert.ToInt32(txtYear.Text);
+        DateTime dateTime = Convert.ToDateTime("01-" + month + "-" + yearofMonth);
+        DataRow dr;
+        DataTable dt = new DataTable();
+        dt.Columns.Add("Monday");
+        dt.Columns.Add("Tuesday");
+        dt.Columns.Add("Wednesday");
+        dt.Columns.Add("Thursday");
+        dt.Columns.Add("Friday");
+        dr = dt.NewRow();
+        for (int i = 0; i < DateTime.DaysInMonth(dateTime.Year, dateTime.Month); i += 1)
+        {
+            txtMonth.Text = Convert.ToDateTime(dateTime.AddDays(0)).ToString("dddd");
+            if (Convert.ToDateTime(dateTime.AddDays(i)).ToString("dddd") == "Monday")
+            {
+                dr["Monday"] = i + 1;
+            }
+            if (dateTime.AddDays(i).ToString("dddd") == "Tuesday")
+            {
+                dr["Tuesday"] = i + 1;
+            }
+            if (dateTime.AddDays(i).ToString("dddd") == "Wednesday")
+            {
+                dr["Wednesday"] = i + 1;
+
+            }
+            if (dateTime.AddDays(i).ToString("dddd") == "Thursday")
+            {
+                dr["Thursday"] = i + 1;
+            }
+            if (dateTime.AddDays(i).ToString("dddd") == "Friday")
+            {
+                dr["Friday"] = i + 1;
+                dt.Rows.Add(dr);
+                dr = dt.NewRow();
+                continue;
+            }
+            if (i == DateTime.DaysInMonth(dateTime.Year, dateTime.Month) - 1)
+            {
+                dt.Rows.Add(dr);
+                dr = dt.NewRow();
+
+            }
+        https://codepen.io/marcobiedermann/pen/rClpv
+        }
+
+        GridView1.DataSource = dt;
+        GridView1.DataBind();
+
+      }
+    }
+        https://jsfiddle.net/ut0xqnh5/1/
+
+    <div>
+
+    </div>
+    <br>
+    April 2021
+    <div>
+    <table>
+    <thead>
+      <tr>
+        <th>Mon</th>
+        <th>Tue</th>
+        <th>Wed</th>
+        <th>Thu</th>
+        <th>Fri</th>
+        <th>Sat</th>
+        <th>Sun</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>29</td>
+        <td>30</td>
+        <td>31</td>
+        <td>1</td>
+        <td>2</td>
+        <td>3</td>
+        <td>4</td>
+      </tr>
+      <tr>
+        <td>5</td>
+        <td>6</td>
+        <td>7</td>
+        <td>8</td>
+        <td>9</td>
+        <td>10</td>
+        <td>11</td>
+      </tr>
+      <tr>
+        <td>12</td>
+        <td>13</td>
+        <td>14</td>
+        <td>15</td>
+        <td>6</td>
+        <td>7</td>
+        <td>18</td>
+      </tr>
+      <tr>
+        <td>19</td>
+        <td>20</td>
+        <td>21</td>
+        <td>22</td>
+        <td>23</td>
+        <td>24</td>
+        <td>25</td>
+      </tr>
+      <tr>
+        <td>26</td>
+        <td>27</td>
+        <td>28</td>
+        <td>29</td>
+        <td>30</td>
+        <td>1</td>
+        <td>2</td>
+      </tr>
+    </tbody>
+
+    </table>
+    </div>
+
+
+            */
     }
