@@ -1,5 +1,6 @@
 ﻿@page "/basicuserpage"
-@inject IShiftRepository repository
+@inject ITimesheetRepository repository
+@using OpenTimesheets.Shared
 
 <div>
     <Calendar ParentMethod="@CalendarCallbackMethod"/>

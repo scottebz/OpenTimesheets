@@ -26,7 +26,7 @@ namespace OpenTimesheets.Client
 
         private static void ConfigureServices(IServiceCollection services)
         {
-            services.AddTransient<IShiftRepository, ShiftInMemory>();
+            services.AddTransient<ITimesheetRepository, TimehseetInMemory>();
             //services.AddScoped<IHttpService, HttpService>();
             //services.AddScoped<IGenreRepository, GenreRepository>();
             //services.AddScoped<IPersonRepository, PersonRepository>();
