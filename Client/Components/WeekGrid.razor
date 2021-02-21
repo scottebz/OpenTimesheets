@@ -1,4 +1,5 @@
 ﻿@inject ITimesheetRepository repository
+@using OpenTimesheets.Shared;
 
 <div class="table-responsive-sm">
     <table class="table table-bordered table-sm small">
@@ -70,6 +71,6 @@
         displayWeek = repository.GetWorkWeek("GordonFreeman", DateTime.Now);
     }
 
-    //https://www.codeply.com/p?starter=Bootstrap%204 
+    //https://www.codeply.com/p?starter=Bootstrap%204
 
 }
