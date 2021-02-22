@@ -69,38 +69,53 @@ else
 
     <div class="container-fluid text-center clear-sides cal-container">
 
-
-        @foreach (var calDay in myModel.CalDays)
+        @for(int cx = 0; cx <= myModel.CalDays.Count; cx+=7)
         {
-            string className = "just_another_day";
-            @if (calDay.CalDay.DayOfWeek == DayOfWeek.Monday)
+            //Console.WriteLine("Row.  CX: " + cx.ToString());
+            int endWeek = cx + 7;
+            if(cx >= myModel.CalDays.Count)
             {
-                className = "row week";
+                break;
             }
-            else
+        <div class="row week">
+            @for (int i = cx; i < endWeek; i++)
             {
-                className = "just_another_day";
+                try
+                {
+                    //Console.WriteLine("Day");
+                    var calDay = myModel.CalDays[i];
+                    //Console.WriteLine(calDay.CalDay.DayOfWeek.ToString());
+                    if (calDay.CalDay.IsI.IsInsideIn(DisplayMonth.FirstDayOfTheMonth, DisplayMonth.LastDayOfTheMonth){
+
+                    }
+                    string dayStyle = "";
+                    <div class="col day-cell day-cell-non-current" @onclick="InvokeParent">
+                        <div class="d-flex flex-row justify-content-end day-of-month">
+                            <div class="">@calDay.CalDay.ToString("dd")</div>
+                        </div>
+                        <div class="d-flex flex-row day-dollar">
+                            <div class=""> <i class="bi-tools"></i> @calDay.HrsAllocated.ToString()</div>
+                        </div>
+                        <div class="d-flex flex-row day-clock">
+                            <div class=""> <i class="bi-clock"></i> @calDay.HrsWorked.ToString()</div>
+                        </div>
+                    </div>
+                }
+                catch (ArgumentOutOfRangeException ex)
+                {
+                    //Console.WriteLine(ex.ToString());
+                    break;
+                }
+
             }
-            <div class="@className">
-                <div class="col day-cell day-cell-non-current" @onclick="InvokeParent">
-                    <div class="d-flex flex-row justify-content-end day-of-month">
-                        <div class="">@calDay.CalDay.ToString("dd")</div>
-                    </div>
-                    <div class="d-flex flex-row day-dollar">
-                        <div class=""> <i class="bi-tools"></i> @calDay.HrsAllocated.ToString()</div>
-                    </div>
-                    <div class="d-flex flex-row day-clock">
-                        <div class=""> <i class="bi-clock"></i> @calDay.HrsWorked.ToString()</div>
-                    </div>
-                </div>
-            </div>
-            Console.WriteLine("CalDay Done...");
+        </div>
         }
-    </div>//calendar container
+     </div>
 
 
 
-}//else
+
+}
 
 
 @code {
@@ -113,6 +128,10 @@ else
     //https://stackoverflow.com/questions/12014253/razor-missing-matching-closing-tag
 
     //[Parameter] public EventCallback<string> OnDateClicked { get; set; }
+
+    //holds a date within the desired display month on screen.
+    //used to determine whether a date is within (or outside) the bounds of the desired display month
+    public DateTime DisplayMonth = DateTime.Now;
 
     private CalendarModel myModel = new CalendarModel();
     class CalendarModel
@@ -156,10 +175,11 @@ else
 
     protected async override Task OnInitializedAsync()
     {
-        await Task.Delay(2000);
+        //await Task.Delay(2000);
 
         //displayWeek = repository.GetWorkWeek("GordonFreeman", DateTime.Now);
-        List<CalDayData> calDays = repository.GetCalendarViewData("GordonF", DateTime.Now);
+        DisplayMonth = new DateTime(2021, 4, 1);
+        List<CalDayData> calDays = repository.GetCalendarViewData("GordonF", DisplayMonth);
         myModel.CalDays = calDays;
         //this.StateHasChanged();
     }
