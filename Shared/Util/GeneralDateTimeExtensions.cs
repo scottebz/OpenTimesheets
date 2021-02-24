@@ -220,5 +220,10 @@ namespace DateTimeExtensions
 
         }
 
+        public static bool IsBetween(this DateTime dte, DateTime start, DateTime end)
+        {
+            return (dte >= start && dte <= end);
+        }
+
     }
 }

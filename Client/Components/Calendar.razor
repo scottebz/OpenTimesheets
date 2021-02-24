@@ -1,4 +1,5 @@
 ﻿@inject ITimesheetRepository repository
+@inject AppState AppState  
 @using OpenTimesheets.Shared;
 
 <h4>DateSelection</h4>
@@ -9,7 +10,7 @@
 }
 else
 {
-
+    Console.WriteLine("Creating Calendar...");
     <div class="container-fluid">
         <!-- Month Title and arrows -->
         <div class=row>
@@ -17,7 +18,7 @@ else
                 <div class="change-month d-flex flex-row justify-content-start"><i class="bi-arrow-left-square"></i></div>
             </div>
             <div class="col-8">
-                <div class="month-name d-flex flex-row justify-content-center">@myModel.CalDays.First().CalDay.Date.ToString("MMMM yyyy")</div><!-- WRONG.  Dont use First.  Use eighth-->
+                <div class="month-name d-flex flex-row justify-content-center">@myModel.CalDays.Skip(8).First().CalDay.Date.ToString("MMMM yyyy")</div><!-- WRONG.  Dont use First.  Use eighth-->
             </div>
             <div class="col-2">
                 <div class="change-month d-flex flex-row justify-content-end"><i class="bi-arrow-right-square"></i></div>
@@ -28,41 +29,15 @@ else
     <div class="container-fluid text-center clear-sides">
         <!-- First Row Days of Week -->
         <div class="row">
-            <div class="col day-head">
-                <div class="d-flex flex-row justify-content-center">
-                    Mon
+            @for (int i = 1; i <= 7; i++)
+            {
+                DateTime da = new DateTime(2021, 2, i); //a month where 1st is a monday
+                <div class="col day-cell day-head">
+                    <div class="d-flex flex-row justify-content-center">
+                     @da.ToString("ddd")
+                    </div>
                 </div>
-            </div>
-            <div class="col day-head">
-                <div class="d-flex flex-row justify-content-center">
-                    Tue
-                </div>
-            </div>
-            <div class="col day-head">
-                <div class="d-flex flex-row justify-content-center">
-                    Wed
-                </div>
-            </div>
-            <div class="col day-head">
-                <div class="d-flex flex-row justify-content-center">
-                    Thu
-                </div>
-            </div>
-            <div class="col day-head">
-                <div class="d-flex flex-row justify-content-center">
-                    Fri
-                </div>
-            </div>
-            <div class="col day-head">
-                <div class="d-flex flex-row justify-content-center">
-                    Sat
-                </div>
-            </div>
-            <div class="col day-head">
-                <div class="d-flex flex-row justify-content-center">
-                    Sun
-                </div>
-            </div>
+            }
         </div>
     </div>
 
@@ -71,7 +46,6 @@ else
 
         @for(int cx = 0; cx <= myModel.CalDays.Count; cx+=7)
         {
-            //Console.WriteLine("Row.  CX: " + cx.ToString());
             int endWeek = cx + 7;
             if(cx >= myModel.CalDays.Count)
             {
@@ -82,14 +56,19 @@ else
             {
                 try
                 {
-                    //Console.WriteLine("Day");
                     var calDay = myModel.CalDays[i];
                     //Console.WriteLine(calDay.CalDay.DayOfWeek.ToString());
-                    if (calDay.CalDay.IsI.IsInsideIn(DisplayMonth.FirstDayOfTheMonth, DisplayMonth.LastDayOfTheMonth){
-
-                    }
                     string dayStyle = "";
-                    <div class="col day-cell day-cell-non-current" @onclick="InvokeParent">
+                    if (calDay.CalDay.IsBetween(DisplayMonth.FirstDayOfTheMonth(), DisplayMonth.LastDayOfTheMonth()))
+                    {
+                        dayStyle = "";
+                    }
+                    else
+                    {
+                        dayStyle = "day-cell-non-current";
+                    }
+
+                    <div class="col day-cell @dayStyle" @onclick="InvokeParent">
                         <div class="d-flex flex-row justify-content-end day-of-month">
                             <div class="">@calDay.CalDay.ToString("dd")</div>
                         </div>
@@ -127,11 +106,15 @@ else
     //https://github.com/aspnet/Mvc/issues/3944
     //https://stackoverflow.com/questions/12014253/razor-missing-matching-closing-tag
 
+    //https://blog.jeremylikness.com/blog/2019-01-03_from-angular-to-blazor-the-health-app/  (cool way to handle event changes/notifications
+    //https://jonhilton.net/blazor-state-management/
+    //https://www.youtube.com/watch?v=GIupo55GTro
+
     //[Parameter] public EventCallback<string> OnDateClicked { get; set; }
 
     //holds a date within the desired display month on screen.
     //used to determine whether a date is within (or outside) the bounds of the desired display month
-    public DateTime DisplayMonth = DateTime.Now;
+    public DateTime DisplayMonth;
 
     private CalendarModel myModel = new CalendarModel();
     class CalendarModel
@@ -179,8 +162,12 @@ else
 
         //displayWeek = repository.GetWorkWeek("GordonFreeman", DateTime.Now);
         DisplayMonth = new DateTime(2021, 4, 1);
+        Console.WriteLine("DisplayMonth: " + DisplayMonth.ToString("MMMM"));
         List<CalDayData> calDays = repository.GetCalendarViewData("GordonF", DisplayMonth);
         myModel.CalDays = calDays;
+
+
+
         //this.StateHasChanged();
     }
 

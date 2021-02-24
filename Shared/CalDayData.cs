@@ -15,7 +15,7 @@ namespace OpenTimesheets.Shared
 
         public override string ToString()
         {
-            string s = this.CalDay.ToShortDateString() + Environment.NewLine;
+            string s = this.CalDay.ToString("ddd dd/MM/yyyy") + Environment.NewLine;
             s += "  HrsWorked: " + this.HrsWorked.ToString("#.##") +Environment.NewLine;
             s += "  HrsAlloc : " + this.HrsAllocated.ToString("#.##") + Environment.NewLine;
             s += "  Username : " + this.Username + Environment.NewLine;

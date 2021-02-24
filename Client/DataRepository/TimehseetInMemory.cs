@@ -79,7 +79,7 @@ namespace OpenTimesheets.Client.DataRepository
         }
 
         //returns list of CalDayData for month of 'date'
-        //should be 35 items long
+        //should be 6 x 7  (42) items long
         public List<CalDayData> GetCalendarViewData(string username, DateTime date)
         {
             List<CalDayData> dayList = new List<CalDayData>();
@@ -110,8 +110,8 @@ namespace OpenTimesheets.Client.DataRepository
                 Random r = new Random();
                 //get all the information between the required dates
                 //SELECT * FROM table WHERE username = '' AND date >= dte AND date <= ldte
-                int daysBetween = (int)ldte.Subtract(dte).TotalDays;
-                for(int i=0; i<= daysBetween; i++)
+                int daysBetween = 42;//(int)ldte.Subtract(dte).TotalDays;
+                for(int i=1; i<= daysBetween; i++)
                 {
                     CalDayData dd = new CalDayData();
                     dd.CalDay = dte.AddDays(i);
