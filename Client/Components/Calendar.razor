@@ -1,6 +1,7 @@
 ﻿@inject ITimesheetRepository repository
 @inject AppState AppState  
 @using OpenTimesheets.Shared;
+@implements IDisposable;
 
 <h4>DateSelection</h4>
 
@@ -10,7 +11,6 @@
 }
 else
 {
-    Console.WriteLine("Creating Calendar...");
     <div class="container-fluid">
         <!-- Month Title and arrows -->
         <div class=row>
@@ -51,7 +51,13 @@ else
             {
                 break;
             }
-        <div class="row week">
+            string mondayOfWeek = myModel.CalDays[cx].CalDay.ToString("yyyy-MM-dd");
+            string WeekSelectedClass = "";
+            if(AppState.SelectedCalendarWeek == mondayOfWeek)
+            {
+                WeekSelectedClass = "week-selected";
+            }
+        <div class="row week @WeekSelectedClass" @onclick="@(() => CalRowClicked(mondayOfWeek))">
             @for (int i = cx; i < endWeek; i++)
             {
                 try
@@ -127,6 +133,45 @@ else
         Console.WriteLine(s);
     }
 
+    void IDisposable.Dispose()
+    {
+        AppState.StateChanged -= async (Source, Property) => await AppState_StateChanged(Source, Property);
+
+    }
+
+    void CalRowClicked(string MondayOfWeek)
+    {
+        //Console.WriteLine(MondayOfWeek + " row clicked.");
+        AppState.UpdateSelectedCalendarWeek(this, MondayOfWeek);
+    }
+
+    private async Task AppState_StateChanged(ComponentBase Source, String Property)
+    {
+        if(Source != this)
+        {
+            await InvokeAsync(StateHasChanged);
+        }
+    }
+
+    protected async override Task OnInitializedAsync()
+    {
+        AppState.StateChanged += async (Source, Property) => await AppState_StateChanged(Source, Property);
+
+        //await Task.Delay(2000);
+
+        //displayWeek = repository.GetWorkWeek("GordonFreeman", DateTime.Now);
+        DisplayMonth = new DateTime(2021, 4, 1);
+        Console.WriteLine("DisplayMonth: " + DisplayMonth.ToString("MMMM"));
+        List<CalDayData> calDays = repository.GetCalendarViewData("GordonF", DisplayMonth);
+        myModel.CalDays = calDays;
+
+        //AppState.Update
+
+
+
+        //this.StateHasChanged();
+    }
+
     /*
 
     private DateModel ChosenDate = new DateModel();
@@ -150,26 +195,13 @@ else
 
     private void InvokeParent()
     {
-        Console.WriteLine("Invoking Parent...");
+        //Console.WriteLine("Invoking Parent...");
         //ParentMethod?.Invoke();
     }
 
 
 
-    protected async override Task OnInitializedAsync()
-    {
-        //await Task.Delay(2000);
 
-        //displayWeek = repository.GetWorkWeek("GordonFreeman", DateTime.Now);
-        DisplayMonth = new DateTime(2021, 4, 1);
-        Console.WriteLine("DisplayMonth: " + DisplayMonth.ToString("MMMM"));
-        List<CalDayData> calDays = repository.GetCalendarViewData("GordonF", DisplayMonth);
-        myModel.CalDays = calDays;
-
-
-
-        //this.StateHasChanged();
-    }
 
     /*
     private Task DateClicked(EventArgs e)

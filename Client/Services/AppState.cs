@@ -10,6 +10,14 @@ namespace OpenTimesheets.Client.Services
     {
         public int Counter { get; private set; } = 0;
 
+        //public event Action CalWeekSelectionChanged;
+        public string SelectedCalendarWeek { get; private set; }
+        public void UpdateSelectedCalendarWeek(ComponentBase src, string calWeek)
+        {
+            this.SelectedCalendarWeek = calWeek;
+            Console.WriteLine("SelectedCalendarWeek: " + calWeek);
+            NotifyStateChanged(src, "SelectedCalendarWeek");
+        }
 
         public void UpdateCounter(ComponentBase src, int counter)
         {

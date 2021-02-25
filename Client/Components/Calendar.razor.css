@@ -9,11 +9,15 @@ $number-of-days: 7;
 $column-width: percentage(1/$number-of-days);
 */
 
-.week {
+.week * {
     /*height: 1vh;*/
     /*width: 100%;*/
     /*overflow: hidden;*/
     /*border: 1px solid black;*/
+}
+
+.week-selected {
+    background-color: limegreen;
 }
 
     .week:hover * {
