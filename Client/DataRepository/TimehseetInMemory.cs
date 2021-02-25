@@ -97,6 +97,7 @@ namespace OpenTimesheets.Client.DataRepository
                     dte = dte.AddDays(-1);
                     dow = dte.DayOfWeek;
                 }
+                Console.WriteLine("FirstDayOfMonth: " + dte.ToString("yyyy-MM-dd ddd"));
 
                 //dte now equals the first cell of the calendar.
                 DateTime ldte = dte.LastDayOfTheMonth();
@@ -111,7 +112,7 @@ namespace OpenTimesheets.Client.DataRepository
                 //get all the information between the required dates
                 //SELECT * FROM table WHERE username = '' AND date >= dte AND date <= ldte
                 int daysBetween = 42;//(int)ldte.Subtract(dte).TotalDays;
-                for(int i=1; i<= daysBetween; i++)
+                for(int i=0; i< daysBetween; i++)
                 {
                     CalDayData dd = new CalDayData();
                     dd.CalDay = dte.AddDays(i);

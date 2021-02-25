@@ -15,13 +15,13 @@ else
         <!-- Month Title and arrows -->
         <div class=row>
             <div class="col-2">
-                <div class="change-month d-flex flex-row justify-content-start"><i class="bi-arrow-left-square"></i></div>
+                <div @onclick="MonthClickLeft" class="change-month d-flex flex-row justify-content-start"><i class="bi-arrow-left-square"></i></div>
             </div>
             <div class="col-8">
                 <div class="month-name d-flex flex-row justify-content-center">@myModel.CalDays.Skip(8).First().CalDay.Date.ToString("MMMM yyyy")</div><!-- WRONG.  Dont use First.  Use eighth-->
             </div>
             <div class="col-2">
-                <div class="change-month d-flex flex-row justify-content-end"><i class="bi-arrow-right-square"></i></div>
+                <div @onclick="MonthClickRight" class="change-month d-flex flex-row justify-content-end"><i class="bi-arrow-right-square"></i></div>
             </div>
         </div>
     </div>
@@ -160,16 +160,41 @@ else
         //await Task.Delay(2000);
 
         //displayWeek = repository.GetWorkWeek("GordonFreeman", DateTime.Now);
-        DisplayMonth = new DateTime(2021, 4, 1);
+
+        DisplayMonth = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1);
         Console.WriteLine("DisplayMonth: " + DisplayMonth.ToString("MMMM"));
         List<CalDayData> calDays = repository.GetCalendarViewData("GordonF", DisplayMonth);
         myModel.CalDays = calDays;
+
+        /*
+        foreach(CalDayData calDay in calDays)
+        {
+            Console.WriteLine(calDay.ToString());
+        }
+        */
+
+
 
         //AppState.Update
 
 
 
         //this.StateHasChanged();
+    }
+
+    void MonthClickLeft()
+    {
+        DisplayMonth = DisplayMonth.AddMonths(-1);
+        AppState.UpdateCalDisplayMonth(this, DisplayMonth);
+        List<CalDayData> calDays = repository.GetCalendarViewData("GordonF", DisplayMonth);
+        myModel.CalDays = calDays;
+    }
+    void MonthClickRight()
+    {
+        DisplayMonth = DisplayMonth.AddMonths(1);
+        AppState.UpdateCalDisplayMonth(this, DisplayMonth);
+        List<CalDayData> calDays = repository.GetCalendarViewData("GordonF", DisplayMonth);
+        myModel.CalDays = calDays;
     }
 
     /*

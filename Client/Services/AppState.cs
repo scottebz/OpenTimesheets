@@ -8,7 +8,7 @@ namespace OpenTimesheets.Client.Services
 {
     public class AppState
     {
-        public int Counter { get; private set; } = 0;
+        //public int Counter { get; private set; } = 0;
 
         //public event Action CalWeekSelectionChanged;
         public string SelectedCalendarWeek { get; private set; }
@@ -19,11 +19,21 @@ namespace OpenTimesheets.Client.Services
             NotifyStateChanged(src, "SelectedCalendarWeek");
         }
 
+        public DateTime CalDisplayMonth { get; private set; }
+        public void UpdateCalDisplayMonth(ComponentBase src, DateTime dte)
+        {
+            this.CalDisplayMonth = dte;
+            NotifyStateChanged(src, "CalDisplayMonth");
+        }
+
+
+
+        /*
         public void UpdateCounter(ComponentBase src, int counter)
         {
             this.Counter = counter;
             NotifyStateChanged(src, "Counter");
-        }
+        }*/
 
         public event Action<ComponentBase, string> StateChanged;
         private void NotifyStateChanged(ComponentBase Source, string Property)
