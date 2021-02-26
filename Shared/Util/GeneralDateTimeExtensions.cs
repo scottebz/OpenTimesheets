@@ -129,6 +129,11 @@ namespace DateTimeExtensions
             return new DateTime(date.Year, date.Month, date.Day, hour, minute, second, millisecond);
         }
 
+        public static DateTime ClearTime(this DateTime date)
+        {
+            return new DateTime(date.Year, date.Month, date.Day);
+        }
+
         /// <summary>
         /// Floor the given DateTime object by the given time interval. i.e. 10:09 floored by 10 minutes would be 10:00
         /// </summary>
@@ -223,6 +228,11 @@ namespace DateTimeExtensions
         public static bool IsBetween(this DateTime dte, DateTime start, DateTime end)
         {
             return (dte >= start && dte <= end);
+        }
+
+        public static bool IsToday(this DateTime dte)
+        {
+            return (dte.ClearTime().Equals(DateTime.Now.ClearTime()));
         }
 
     }

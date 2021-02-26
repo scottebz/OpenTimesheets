@@ -65,6 +65,7 @@ else
                     var calDay = myModel.CalDays[i];
                     //Console.WriteLine(calDay.CalDay.DayOfWeek.ToString());
                     string dayStyle = "";
+                    string isToday = "";
                     if (calDay.CalDay.IsBetween(DisplayMonth.FirstDayOfTheMonth(), DisplayMonth.LastDayOfTheMonth()))
                     {
                         dayStyle = "";
@@ -73,10 +74,18 @@ else
                     {
                         dayStyle = "day-cell-non-current";
                     }
+                    if (calDay.CalDay.IsToday())
+                    {
+                        isToday = "day-istoday";
+                    }
+                    else
+                    {
+                        isToday = "";
+                    }
 
                     <div class="col day-cell @dayStyle" @onclick="InvokeParent">
                         <div class="d-flex flex-row justify-content-end day-of-month">
-                            <div class="">@calDay.CalDay.ToString("dd")</div>
+                            <div class="@isToday">@calDay.CalDay.ToString("dd")</div>
                         </div>
                         <div class="d-flex flex-row day-dollar">
                             <div class=""> <i class="bi-tools"></i> @calDay.HrsAllocated.ToString()</div>

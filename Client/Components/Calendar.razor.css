@@ -84,6 +84,14 @@ $column-width: percentage(1/$number-of-days);
     background-color: #ebebeb;
 }
 
+.day-istoday {
+    background-color: red;
+    color: white;
+    padding-left: 5%;
+    padding-right: 5%;
+    border-radius: 25%;
+}
+
 
 .day-of-month {
     /*background-color: red;*/
