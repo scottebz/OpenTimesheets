@@ -1,5 +1,8 @@
 ﻿@inject ITimesheetRepository repository
+@inject AppState AppState
 @using OpenTimesheets.Shared;
+@using System.Globalization;
+@implements IDisposable;
 
 <div class="table-responsive-sm">
     <table class="table table-bordered table-sm small">
@@ -66,11 +69,39 @@
 
     protected async override Task OnInitializedAsync()
     {
-        await Task.Delay(2000);
+        AppState.StateChanged += async (Source, Property) => await AppState_StateChanged(Source, Property);
+        Console.WriteLine("WeekGrid. OninitAsync...");
 
-        displayWeek = repository.GetWorkWeek("GordonFreeman", DateTime.Now);
+
     }
 
-    //https://www.codeply.com/p?starter=Bootstrap%204
+
+    private async Task AppState_StateChanged(ComponentBase Source, String Property)
+    {
+        if (Source != this)
+        {
+            Console.WriteLine("AppStateChanged: " + Property);
+
+            string calWeek = AppState.SelectedCalendarWeek;
+            try
+            {
+                DateTime dte = DateTime.ParseExact(calWeek, "yyyy-MM-dd", CultureInfo.InvariantCulture);
+                Console.WriteLine("About to get calweek data...");
+                displayWeek = repository.GetWorkWeek("GordonFreeman", dte);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+            }
+
+            await InvokeAsync(StateHasChanged);
+        }
+    }
+
+    void IDisposable.Dispose()
+    {
+        AppState.StateChanged -= async (Source, Property) => await AppState_StateChanged(Source, Property);
+
+    }
 
 }

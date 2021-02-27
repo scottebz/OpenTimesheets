@@ -142,11 +142,7 @@ else
         Console.WriteLine(s);
     }
 
-    void IDisposable.Dispose()
-    {
-        AppState.StateChanged -= async (Source, Property) => await AppState_StateChanged(Source, Property);
 
-    }
 
     void CalRowClicked(string MondayOfWeek)
     {
@@ -162,9 +158,16 @@ else
         }
     }
 
+    void IDisposable.Dispose()
+    {
+        AppState.StateChanged -= async (Source, Property) => await AppState_StateChanged(Source, Property);
+
+    }
+
     protected async override Task OnInitializedAsync()
     {
         AppState.StateChanged += async (Source, Property) => await AppState_StateChanged(Source, Property);
+        Console.WriteLine("Calendar. OninitAsync...");
 
         //await Task.Delay(2000);
 
@@ -255,7 +258,7 @@ else
     */
 
 
-    
+
 
 
 }
