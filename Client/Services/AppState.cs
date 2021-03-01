@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Components;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using OpenTimesheets.Shared.Entities;
 
 namespace OpenTimesheets.Client.Services
 {
@@ -18,6 +19,15 @@ namespace OpenTimesheets.Client.Services
             Console.WriteLine("SelectedCalendarWeek: " + calWeek);
             NotifyStateChanged(src, "SelectedCalendarWeek");
         }
+
+        public WorkShift SelectedWorkShift { get; private set; }
+        public void UpdatedSelectedWorkShift(ComponentBase src, WorkShift ws)
+        {
+            this.SelectedWorkShift = ws;
+            Console.WriteLine("SelectedWorkShift: " + ws.ToString());
+            NotifyStateChanged(src, "SelectedWorkShift");
+        }
+        
 
         public DateTime CalDisplayMonth { get; private set; }
         public void UpdateCalDisplayMonth(ComponentBase src, DateTime dte)

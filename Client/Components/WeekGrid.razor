@@ -39,7 +39,7 @@
                     }
                     else
                     {
-                        <tr class="clickable">
+                        <tr class="clickable" @(() => EditShift(mondayOfWeek))>
                             <td class="small">@ws.ShiftDate.ToString("ddd dd/MM")</td>
                             <td>@ws.ShiftStart.ToString("HH:mm tt")</td>
                             <td>@ws.ShiftEnd.ToString("HH:mm tt")</td>
@@ -86,7 +86,6 @@
             try
             {
                 DateTime dte = DateTime.ParseExact(calWeek, "yyyy-MM-dd", CultureInfo.InvariantCulture);
-                Console.WriteLine("About to get calweek data...");
                 displayWeek = repository.GetWorkWeek("GordonFreeman", dte);
             }
             catch (Exception ex)
