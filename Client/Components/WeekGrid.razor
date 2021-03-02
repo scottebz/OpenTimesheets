@@ -7,7 +7,7 @@
 <div class="table-responsive-sm">
     <table class="table table-bordered table-sm small">
         <thead class="thead-dark">
-            <tr @onclick="(()=> EditShift())">
+            <tr>
                 <th scope="col">Date</th>
                 <th scope="col">Start</th>
                 <th scope="col">Finish</th>
@@ -39,7 +39,7 @@
                     }
                     else
                     {
-                        <tr class="clickable" @(() => EditShift(mondayOfWeek))>
+                        <tr class="clickable"  @onclick="@(() => EditShift(ws))">
                             <td class="small">@ws.ShiftDate.ToString("ddd dd/MM")</td>
                             <td>@ws.ShiftStart.ToString("HH:mm tt")</td>
                             <td>@ws.ShiftEnd.ToString("HH:mm tt")</td>
@@ -62,9 +62,10 @@
 
     public WorkWeek displayWeek;
 
-    private void EditShift()
+    private void EditShift(WorkShift ws)
     {
         Console.WriteLine("Clicked A row!");
+        Console.WriteLine(ws.ToString());
     }
 
     protected async override Task OnInitializedAsync()
