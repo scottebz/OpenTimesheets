@@ -64,7 +64,6 @@
 
     private void EditShift(WorkShift ws)
     {
-        Console.WriteLine("Clicked A row!");
         Console.WriteLine(ws.ToString());
     }
 
@@ -83,18 +82,22 @@
         {
             Console.WriteLine("AppStateChanged: " + Property);
 
-            string calWeek = AppState.SelectedCalendarWeek;
-            try
+            if (Property == "SelectedCalendarWeek")
             {
-                DateTime dte = DateTime.ParseExact(calWeek, "yyyy-MM-dd", CultureInfo.InvariantCulture);
-                displayWeek = repository.GetWorkWeek("GordonFreeman", dte);
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.ToString());
+                string calWeek = AppState.SelectedCalendarWeek;
+                try
+                {
+                    DateTime dte = DateTime.ParseExact(calWeek, "yyyy-MM-dd", CultureInfo.InvariantCulture);
+                    displayWeek = repository.GetWorkWeek("GordonFreeman", dte);
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.ToString());
+                }
+
+                await InvokeAsync(StateHasChanged);
             }
 
-            await InvokeAsync(StateHasChanged);
         }
     }
 

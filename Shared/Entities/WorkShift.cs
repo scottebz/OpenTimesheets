@@ -18,6 +18,17 @@ namespace OpenTimesheets.Shared.Entities
         public decimal HrsElapsed { get; set; }
         public decimal HrsBreak { get; set; } 
         public decimal HrsNorm { get; set; }
+
+        public string ToString()
+        {
+            string s = "";
+            s += ShiftDate.ToString("yyyy-MM-dd") + ": ";
+            s += ShiftStart.ToString("HH:mm") + " - ";
+            s += ShiftEnd.ToString("HH:mm") + Environment.NewLine;
+            s += HrsElapsed.ToString() + " - " + HrsBreak.ToString() + " = " + HrsNorm;
+
+            return s;
+        }
     }
 
     public class WorkWeek: IEnumerable<WorkShift>
