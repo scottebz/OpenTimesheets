@@ -1,0 +1,44 @@
+﻿@inject ITimesheetRepository repository
+@inject AppState AppState
+@using OpenTimesheets.Shared;
+@using System.Globalization;
+@implements IDisposable;
+@inject NavigationManager navManager
+@page "/WorkShift"
+
+<h3>WorkShiftForm</h3>
+
+@if (workShiftModel == null)
+{
+    <div><p>Loading...</p></div>
+}
+else
+{
+    <EditForm Model="workShiftModel" OnValidSubmit="SaveShift">
+
+        <div class="form-group">
+            <label>Start:</label>
+            <div>
+                <input type="time" class="form-control time-control" required @bind="workShiftModel.ShiftDate" @bind:format="HH:mm" />
+            </div>
+
+        </div>
+
+    </EditForm>
+}
+
+
+
+@code {
+    private WorkShift workShiftModel;
+
+    private void SaveShift()
+    {
+
+    }
+
+    protected async override Task OnInitializedAsync()
+    {
+    }
+
+}
