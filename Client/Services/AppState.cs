@@ -37,7 +37,6 @@ namespace OpenTimesheets.Client.Services
         }
 
 
-
         /*
         public void UpdateCounter(ComponentBase src, int counter)
         {

@@ -65,7 +65,7 @@
 
     private void EditShift(WorkShift ws)
     {
-        Console.WriteLine(ws.ToString());
+        AppState.UpdatedSelectedWorkShift(this, ws);
     }
 
     protected async override Task OnInitializedAsync()

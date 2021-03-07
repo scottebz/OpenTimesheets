@@ -15,12 +15,20 @@
 else
 {
     <EditForm Model="workShiftModel" OnValidSubmit="SaveShift">
-
+        <DataAnnotationsValidator/>
         <div class="form-group">
             <label>Start:</label>
             <div>
-                <input type="time" class="form-control time-control" required @bind="workShiftModel.ShiftDate" @bind:format="HH:mm" />
+                <input type="time" class="form-control time-control" required @bind="workShiftModel.ShiftStart" @bind:format="HH:mm" />
+                <ValidationMessage For="@workShiftModel.ShiftStart"/>
             </div>
+
+            <label>End:</label>
+            <div>
+                <input type="time" class="form-control time-control" required @bind="workShiftModel.ShiftEnd" @bind:format="HH:mm" />
+            </div>
+
+            <button class="btn btn-success" type="submit">Save</button>
 
         </div>
 
@@ -39,6 +47,22 @@ else
 
     protected async override Task OnInitializedAsync()
     {
+        AppState.StateChanged += async (Source, Property) => await AppState_StateChanged(Source, Property);
+
+    }
+
+    private async Task AppState_StateChanged(ComponentBase Source, String Property)
+    {
+        if (Source != this)
+        {
+            await InvokeAsync(StateHasChanged);
+        }
+    }
+
+    void IDisposable.Dispose()
+    {
+        AppState.StateChanged -= async (Source, Property) => await AppState_StateChanged(Source, Property);
+
     }
 
 }

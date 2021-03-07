@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,7 +14,11 @@ namespace OpenTimesheets.Shared.Entities
         public string Username { get; set; }
         public int UserFk { get; set; }
         public DateTime ShiftDate { get; set; }
+       
+        [Required(ErrorMessage = "Required")]
         public DateTime ShiftStart { get; set; }
+        
+        [Required]
         public DateTime ShiftEnd { get; set; }
         public decimal HrsElapsed { get; set; }
         public decimal HrsBreak { get; set; } 
