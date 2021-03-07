@@ -66,6 +66,7 @@
     private void EditShift(WorkShift ws)
     {
         AppState.UpdatedSelectedWorkShift(this, ws);
+        navManager.NavigateTo("/WorkShift");
     }
 
     protected async override Task OnInitializedAsync()

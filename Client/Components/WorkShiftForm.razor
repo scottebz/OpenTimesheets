@@ -20,7 +20,6 @@ else
             <label>Start:</label>
             <div>
                 <input type="time" class="form-control time-control" required @bind="workShiftModel.ShiftStart" @bind:format="HH:mm" />
-                <ValidationMessage For="@workShiftModel.ShiftStart"/>
             </div>
 
             <label>End:</label>
@@ -48,6 +47,8 @@ else
     protected async override Task OnInitializedAsync()
     {
         AppState.StateChanged += async (Source, Property) => await AppState_StateChanged(Source, Property);
+
+        workShiftModel = AppState.SelectedWorkShift;
 
     }
 
