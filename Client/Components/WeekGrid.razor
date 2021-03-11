@@ -74,6 +74,17 @@
         AppState.StateChanged += async (Source, Property) => await AppState_StateChanged(Source, Property);
         Console.WriteLine("WeekGrid. OninitAsync...");
 
+        string calWeek = AppState.SelectedCalendarWeek;
+        try
+        {
+            DateTime dte = DateTime.ParseExact(calWeek, "yyyy-MM-dd", CultureInfo.InvariantCulture);
+            displayWeek = repository.GetWorkWeek("GordonFreeman", dte);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.ToString());
+        }
+
 
     }
 

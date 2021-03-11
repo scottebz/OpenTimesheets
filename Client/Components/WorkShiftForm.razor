@@ -17,15 +17,11 @@ else
     <EditForm Model="workShiftModel" OnValidSubmit="SaveShift">
         <DataAnnotationsValidator/>
         <div class="form-group">
-            <label>Start:</label>
+            
             <div>
-                <input type="time" class="form-control time-control" required @bind="workShiftModel.ShiftStart" @bind:format="HH:mm" />
+                <label>Start </label> <input type="time"  class="form-control time-control" required @bind="@workShiftModel.ShiftStart"  />
             </div>
 
-            <label>End:</label>
-            <div>
-                <input type="time" class="form-control time-control" required @bind="workShiftModel.ShiftEnd" @bind:format="HH:mm" />
-            </div>
 
             <button class="btn btn-success" type="submit">Save</button>
 
@@ -39,9 +35,26 @@ else
 @code {
     private WorkShift workShiftModel;
 
-    private void SaveShift()
+    /*
+    private TimeSpan _ts1 = TimeSpan.FromHours(0);
+    private string ShiftStartTimeProxy
+    {
+        get => workShiftModel.ShiftStart.ToString();
+        set => TimeSpan.TryParse(value, out _ts1);
+    }
+    */
+
+    void ValidFormSubmitted(EditContext editContext)
     {
 
+
+    }
+
+    private void SaveShift()
+    {
+        Console.WriteLine("Shift saved");
+        Console.WriteLine(workShiftModel.ToString());
+        navManager.NavigateTo("/basicuserpage");
     }
 
     protected async override Task OnInitializedAsync()
@@ -66,4 +79,13 @@ else
 
     }
 
+
+    /*
+                <label>End:</label>
+            <div>
+                <input type="time" class="form-control time-control" required @bind="workShiftModel.ShiftEnd" @bind:format="HH:mm" />
+            </div>*/
+
 }
+
+
