@@ -34,6 +34,8 @@ namespace OpenTimesheets.Shared.Entities
 
             return s;
         }
+
+        public List<ProjAlloc> ProjAllocs { get; set; } = new List<ProjAlloc>();
     }
 
     public class WorkWeek: IEnumerable<WorkShift>

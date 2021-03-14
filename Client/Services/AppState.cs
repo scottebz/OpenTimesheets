@@ -20,6 +20,14 @@ namespace OpenTimesheets.Client.Services
             NotifyStateChanged(src, "SelectedCalendarWeek");
         }
 
+        public WorkWeek SelectedWorkWeek { get; private set; }
+        public void UpdateSelectedWorkWeek(ComponentBase src, WorkWeek ww)
+        {
+            this.SelectedWorkWeek = ww;
+            Console.WriteLine("SelectedWorkWee: " + ww.ToString());
+            NotifyStateChanged(src, "SelectedWorkWeek");
+        }
+
         public WorkShift SelectedWorkShift { get; private set; }
         public void UpdatedSelectedWorkShift(ComponentBase src, WorkShift ws)
         {

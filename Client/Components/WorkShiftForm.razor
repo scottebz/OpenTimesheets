@@ -6,7 +6,7 @@
 @inject NavigationManager navManager
 @page "/WorkShift"
 
-<h3>WorkShiftForm</h3>
+<h3></h3>
 
 @if (workShiftModel == null)
 {
@@ -14,20 +14,30 @@
 }
 else
 {
-    <EditForm Model="workShiftModel" OnValidSubmit="SaveShift">
-        <DataAnnotationsValidator/>
-        <div class="form-group">
-            
-            <div>
-                <label>Start </label> <input type="time"  class="form-control time-control" required @bind="@workShiftModel.ShiftStart"  />
-            </div>
+<h4>@workShiftModel.ShiftDate.ToString("ddd dd MMM")</h4>
 
-
-            <button class="btn btn-success" type="submit">Save</button>
-
+<EditForm Model="workShiftModel" OnValidSubmit="SaveShift">
+    <DataAnnotationsValidator />
+    <div class="form-group row">
+        <label for="inputShiftStart" class="col-sm-2 col-form-label">Start</label>
+        <div class="col-sm-10">
+            <input type="time" id="inputShiftStart" class="form-control time-control" required @bind="@workShiftModel.ShiftStart" />
         </div>
-
-    </EditForm>
+    </div>
+    <div class="form-group row">
+        <label for="inputShiftEnd" class="col-sm-2 col-form-label">End</label>
+        <div class="col-sm-10">
+            <input type="time" id="inputShiftEnd" class="form-control time-control" required @bind="@workShiftModel.ShiftEnd" />
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="inputBreak" class="col-sm-2 col-form-label">Break</label>
+        <div class="col-sm-10">
+            <input type="number" id="inputShiftEnd" class="form-control time-control" required @bind="@workShiftModel.HrsBreak" />
+        </div>
+    </div>
+    <button class="btn btn-success" type="submit">Save</button>
+</EditForm>
 }
 
 
