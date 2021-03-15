@@ -1,0 +1,12 @@
+﻿// Scaffold-DbContext "Server=srvname\SQLExpress;Database=SIP;user id=se;password=se;" Microsoft.EntityFrameworkCore.SqlServer -OutputDir Models  -DataAnnotations -F
+
+//View > Other windows > Package Manager Console
+//https://docs.microsoft.com/en-us/ef/core/miscellaneous/cli/powershell
+//  PM> Scaffold-DbContext "Server=srvname\SQLExpress;Database=SIP;user id=se;password=se;" Microsoft.EntityFrameworkCore.SqlServer -OutputDir Models  -DataAnnotations -Tables table1,table2-F
+//https://stackoverflow.com/questions/59810607/does-ef-core-3-1-support-db-first-approach
+//https://www.entityframeworktutorial.net/efcore/create-model-for-existing-database-in-ef-core.aspx
+//https://www.learnentityframeworkcore.com/walkthroughs/existing-database
+
+
+PM > Add-Migration Initial
+PM > Update-Database
