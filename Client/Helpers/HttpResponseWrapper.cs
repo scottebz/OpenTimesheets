@@ -19,5 +19,10 @@ namespace OpenTimesheets.Client.Helpers
         public bool Success { get; set; }
         public T Response { get; set; }
         public HttpResponseMessage HttpResponse { get; set; }
+
+        public async Task<string> GetBody()
+        {
+            return await HttpResponseMessage.Content.ReadAsStringAsync();
+        }
     }
 }

@@ -3,6 +3,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using OpenTimesheets.Client.DataRepository;
+using OpenTimesheets.Client.Helpers;
 using OpenTimesheets.Client.Services;
 using System;
 using System.Collections.Generic;
@@ -30,6 +31,8 @@ namespace OpenTimesheets.Client
         {
             services.AddScoped<ITimesheetRepository, TimehseetInMemory>();
             services.AddScoped<AppState>();
+            services.AddScoped<IHttpService, HttpService>();
+            services.AddScoped<IWorkShiftRepository, WorkShiftRepository>();
             //services.AddScoped<IHttpService, HttpService>();
             //services.AddScoped<IGenreRepository, GenreRepository>();
             //services.AddScoped<IPersonRepository, PersonRepository>();

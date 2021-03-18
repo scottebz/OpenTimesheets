@@ -10,3 +10,7 @@
 
 PM > Add-Migration Initial
 PM > Update-Database
+
+
+
+https://www.mssqltips.com/sqlservertip/5242/adding-users-to-azure-sql-databases/
