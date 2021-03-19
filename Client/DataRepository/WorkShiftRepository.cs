@@ -10,7 +10,7 @@ namespace OpenTimesheets.Client.DataRepository
     public class WorkShiftRepository : IWorkShiftRepository
     {
         private IHttpService httpService;
-        private string url = "api/workshifts";
+        private string url = "api/workshift";
 
         public WorkShiftRepository(IHttpService httpService)
         {

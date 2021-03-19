@@ -61,12 +61,29 @@ else
 
     }
 
-    private void SaveShift()
+    private async Task SaveShift()
     {
         Console.WriteLine("Shift saved");
         Console.WriteLine(workShiftModel.ToString());
+        WorkShift newWs = new WorkShift();
+        newWs.ShiftDate = workShiftModel.ShiftDate;
+        newWs.ShiftStart = workShiftModel.ShiftStart;
+        newWs.ShiftEnd = workShiftModel.ShiftEnd;
+        newWs.HrsBreak = workShiftModel.HrsBreak;
+        newWs.Username = workShiftModel.Username;
+
+        try
+        {
+            await workShiftRepository.CreateWorkShift(newWs);
         navManager.NavigateTo("/basicuserpage");
+
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.Message);
+        }
     }
+
 
     protected async override Task OnInitializedAsync()
     {

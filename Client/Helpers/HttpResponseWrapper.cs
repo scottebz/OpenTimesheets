@@ -22,7 +22,7 @@ namespace OpenTimesheets.Client.Helpers
 
         public async Task<string> GetBody()
         {
-            return await HttpResponseMessage.Content.ReadAsStringAsync();
+            return await HttpResponse.Content.ReadAsStringAsync();
         }
     }
 }
