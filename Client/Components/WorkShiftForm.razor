@@ -4,7 +4,7 @@
 @using System.Globalization;
 @implements IDisposable;
 @inject NavigationManager navManager
-@inject IWorkShiftRepository workShiftRepository
+
 @page "/WorkShift"
 
 <h3></h3>
@@ -34,7 +34,7 @@ else
     <div class="form-group row">
         <label for="inputBreak" class="col-sm-2 col-form-label">Break</label>
         <div class="col-sm-10">
-            <input type="number" id="inputShiftEnd" class="form-control time-control" required @bind="@workShiftModel.HrsBreak" />
+            <input type="number" id="inputShiftEnd" min="0" pattern="^\d*(\.\d{0,2})?$" step="0.1" class="form-control time-control" required @bind="@workShiftModel.HrsBreak" />
         </div>
     </div>
     <button class="btn btn-success" type="submit">Save</button>
@@ -71,11 +71,13 @@ else
         newWs.ShiftEnd = workShiftModel.ShiftEnd;
         newWs.HrsBreak = workShiftModel.HrsBreak;
         newWs.Username = workShiftModel.Username;
+        newWs.HrsElapsed = (decimal) newWs.ShiftEnd.Subtract(newWs.ShiftStart).TotalHours;
+        newWs.HrsNorm = newWs.HrsElapsed - newWs.HrsBreak;
 
         try
         {
-            await workShiftRepository.CreateWorkShift(newWs);
-        navManager.NavigateTo("/basicuserpage");
+            await repository.CreateWorkShift(newWs);
+            navManager.NavigateTo("/basicuserpage");
 
         }
         catch (Exception ex)
@@ -109,6 +111,9 @@ else
 
 
     /*
+
+    //@inject IWorkShiftRepository workShiftRepository
+
                 <label>End:</label>
             <div>
                 <input type="time" class="form-control time-control" required @bind="workShiftModel.ShiftEnd" @bind:format="HH:mm" />

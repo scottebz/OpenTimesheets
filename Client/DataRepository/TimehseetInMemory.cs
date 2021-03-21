@@ -140,5 +140,10 @@ namespace OpenTimesheets.Client.DataRepository
             }
             return dayList;
         }
+
+        public Task CreateWorkShift(WorkShift ws)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

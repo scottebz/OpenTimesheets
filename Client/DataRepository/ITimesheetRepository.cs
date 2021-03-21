@@ -15,5 +15,6 @@ namespace OpenTimesheets.Client.DataRepository
         public WorkWeek GetWorkWeek(string username, DateTime date);
         public List<ProjAlloc> GetProjAlloc(string username, WorkShift workShift);
         public List<OpenTimesheets.Shared.CalDayData> GetCalendarViewData(string username, DateTime date);
+        Task CreateWorkShift(WorkShift ws);
     }
 }

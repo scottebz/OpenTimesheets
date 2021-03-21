@@ -27,6 +27,7 @@ namespace OpenTimesheets.Shared.Entities
         public string ToString()
         {
             string s = "";
+            s += Id.ToString() + "; ";
             s += ShiftDate.ToString("yyyy-MM-dd") + ": ";
             s += ShiftStart.ToString("HH:mm") + " - ";
             s += ShiftEnd.ToString("HH:mm") + Environment.NewLine;

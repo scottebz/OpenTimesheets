@@ -9,8 +9,9 @@ namespace OpenTimesheets.Shared
     public class CalDayData
     {
         public DateTime CalDay { get; set; }
-        public decimal HrsWorked{ get; set; }
-        public decimal HrsAllocated { get; set; }
+        public decimal HrsWorked { get; set; } = 0
+            ;
+        public decimal HrsAllocated { get; set; } = 0;
         public string Username { get; set; }
 
         public override string ToString()

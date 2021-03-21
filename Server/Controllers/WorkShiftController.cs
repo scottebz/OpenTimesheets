@@ -27,6 +27,16 @@ namespace OpenTimesheets.Server.Controllers
             return ws.Id;
         }
 
+        [HttpPut]
+        public async Task<ActionResult<int>> Put(WorkShift ws)
+        {
+            context.Update(ws);
+            await context.SaveChangesAsync();
+            return ws.Id;
+        }
+
+        //public async Task<ActionResult<WorkShift>> GetResult()
+
 
         /*
         public IActionResult Index()

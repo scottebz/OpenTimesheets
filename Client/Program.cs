@@ -29,10 +29,10 @@ namespace OpenTimesheets.Client
 
         private static void ConfigureServices(IServiceCollection services)
         {
-            services.AddScoped<ITimesheetRepository, TimehseetInMemory>();
+            services.AddScoped<ITimesheetRepository, TimesheetRepository>();
             services.AddScoped<AppState>();
             services.AddScoped<IHttpService, HttpService>();
-            services.AddScoped<IWorkShiftRepository, WorkShiftRepository>();
+            //services.AddScoped<IWorkShiftRepository, WorkShiftRepository>();
             //services.AddScoped<IHttpService, HttpService>();
             //services.AddScoped<IGenreRepository, GenreRepository>();
             //services.AddScoped<IPersonRepository, PersonRepository>();
