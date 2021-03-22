@@ -23,7 +23,8 @@ namespace OpenTimesheets.Server.Controllers
             this.context = context;
         }
 
-
+        //[HttpGet("{date}")]
+        [HttpGet]
         public async Task<ActionResult<List<CalDayData>>> Get([FromQuery] DateTime date)
         {
             List<CalDayData> dayList = new List<CalDayData>();
@@ -62,7 +63,7 @@ namespace OpenTimesheets.Server.Controllers
                     CalDayData dd = new CalDayData();
                     dd.CalDay = dte.AddDays(i);
 
-                    var result = context.WorkShifts.Where(q => q.ShiftDate == dd.CalDay).FirstOrDefault();
+                    var result = await context.WorkShifts.Where(q => q.ShiftDate == dd.CalDay).FirstOrDefaultAsync();
                     if(result != null)
                     {
                         dd.HrsWorked = result.HrsNorm;
@@ -76,7 +77,7 @@ namespace OpenTimesheets.Server.Controllers
                 Console.WriteLine(ex.ToString());
             }
 
-            return dayList;
+            return  dayList;
         }
     }
 }

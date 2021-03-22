@@ -52,6 +52,17 @@ namespace OpenTimesheets.Client.Helpers
                 return new HttpResponseWrapper<T>(default, false, responseHTTP);
             }
         }
+        /*
+        public static async Task<T> GetHelper<T>(this IHttpService httpService, string url)
+        {
+            var response = await httpService.Get<T>(url);
+            if (!response.Success)
+            {
+                throw new ApplicationException(await response.GetBody());
+            }
+            return response.Response;
+        }
+        */
 
         private async Task<T> Deserialize<T>(HttpResponseMessage httpResponse, JsonSerializerOptions options)
         {
