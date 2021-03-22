@@ -22,6 +22,22 @@ namespace OpenTimesheets.Client.Helpers
             this.httpClient = httpClient;
         }
 
+        public async Task<HttpResponseWrapper<T>> Get<T>(string url)
+        {
+            var responseHTTP = await httpClient.GetAsync(url);
+
+            if (responseHTTP.IsSuccessStatusCode)
+            {
+                var response = await Deserialize<T>(responseHTTP, defaultJsonSerializerOptions);
+                return new HttpResponseWrapper<T>(response, true, responseHTTP);
+            }
+            else
+            {
+                return new HttpResponseWrapper<T>(default, false, responseHTTP);
+            }
+        }
+
+
         public async Task<HttpResponseWrapper<object>> Post<T>(string url, T data)
         {
             var dataJson = JsonSerializer.Serialize(data);
@@ -38,20 +54,7 @@ namespace OpenTimesheets.Client.Helpers
             return new HttpResponseWrapper<object>(null, response.IsSuccessStatusCode, response);
         }
 
-        public async Task<HttpResponseWrapper<T>> Get<T>(string url)
-        {
-            var responseHTTP = await httpClient.GetAsync(url);
 
-            if (responseHTTP.IsSuccessStatusCode)
-            {
-                var response = await Deserialize<T>(responseHTTP, defaultJsonSerializerOptions);
-                return new HttpResponseWrapper<T>(response, true, responseHTTP);
-            }
-            else
-            {
-                return new HttpResponseWrapper<T>(default, false, responseHTTP);
-            }
-        }
         /*
         public static async Task<T> GetHelper<T>(this IHttpService httpService, string url)
         {
@@ -68,6 +71,28 @@ namespace OpenTimesheets.Client.Helpers
         {
             var responseString = await httpResponse.Content.ReadAsStringAsync();
             return JsonSerializer.Deserialize<T>(responseString, options);
+        }
+
+        public async Task<HttpResponseWrapper<object>> Delete(string url)
+        {
+            var responseHTTP = await httpClient.DeleteAsync(url);
+            return new HttpResponseWrapper<object>(null, responseHTTP.IsSuccessStatusCode, responseHTTP);
+        }
+
+        public async Task<HttpResponseWrapper<TResponse>> Post<T, TResponse>(string url, T data)
+        {
+            var dataJson = JsonSerializer.Serialize(data);
+            var stringContent = new StringContent(dataJson, Encoding.UTF8, "application/json");
+            var response = await httpClient.PostAsync(url, stringContent);
+            if (response.IsSuccessStatusCode)
+            {
+                var responseDeserialized = await Deserialize<TResponse>(response, defaultJsonSerializerOptions);
+                return new HttpResponseWrapper<TResponse>(responseDeserialized, true, response);
+            }
+            else
+            {
+                return new HttpResponseWrapper<TResponse>(default, false, response);
+            }
         }
     }
 }

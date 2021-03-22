@@ -175,7 +175,8 @@ else
 
         DisplayMonth = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1);
         Console.WriteLine("DisplayMonth: " + DisplayMonth.ToString("MMMM"));
-        List<CalDayData> calDays = repository.GetCalendarViewData("GordonF", DisplayMonth);
+        List<CalDayData> calDays = await repository.GetCalendarViewData("GordonF", DisplayMonth);
+        Console.WriteLine("List<CalDatData> is: " + calDays.Count + " long.");
         myModel.CalDays = calDays;
 
         /*
@@ -188,18 +189,18 @@ else
         //this.StateHasChanged();
     }
 
-    void MonthClickLeft()
+    async void MonthClickLeft()
     {
         DisplayMonth = DisplayMonth.AddMonths(-1);
         AppState.UpdateCalDisplayMonth(this, DisplayMonth);
-        List<CalDayData> calDays = repository.GetCalendarViewData("GordonF", DisplayMonth);
+        List<CalDayData> calDays = await repository.GetCalendarViewData("GordonF", DisplayMonth);
         myModel.CalDays = calDays;
     }
-    void MonthClickRight()
+    async void MonthClickRight()
     {
         DisplayMonth = DisplayMonth.AddMonths(1);
         AppState.UpdateCalDisplayMonth(this, DisplayMonth);
-        List<CalDayData> calDays = repository.GetCalendarViewData("GordonF", DisplayMonth);
+        List<CalDayData> calDays = await repository.GetCalendarViewData("GordonF", DisplayMonth);
         myModel.CalDays = calDays;
     }
 

@@ -145,5 +145,10 @@ namespace OpenTimesheets.Client.DataRepository
         {
             throw new NotImplementedException();
         }
+
+        Task<List<CalDayData>> ITimesheetRepository.GetCalendarViewData(string username, DateTime date)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

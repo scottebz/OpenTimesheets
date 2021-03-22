@@ -28,11 +28,13 @@ namespace OpenTimesheets.Client.DataRepository
 
         public async Task<List<CalDayData>> GetCalendarViewData(string username, DateTime date)
         {
-            var response = await httpService.Get(ControllerURL.urlCalendar, date);
+            var response = await httpService.Post<DateTime, List<CalDayData>>(ControllerURL.urlCalendar + "/getmonthdata", date);
             if (!response.Success)
             {
+                Console.WriteLine("GetCalendarViewData failed...");
                 throw new ApplicationException(await response.GetBody());
             }
+            return response.Response;
         }
 
         public List<ProjAlloc> GetProjAlloc(string username, WorkShift workShift)
@@ -115,9 +117,6 @@ namespace OpenTimesheets.Client.DataRepository
             return ww;
         }
 
-        List<CalDayData> ITimesheetRepository.GetCalendarViewData(string username, DateTime date)
-        {
-            throw new NotImplementedException();
-        }
+
     }
 }

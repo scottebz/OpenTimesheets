@@ -24,8 +24,8 @@ namespace OpenTimesheets.Server.Controllers
         }
 
         //[HttpGet("{date}")]
-        [HttpGet]
-        public async Task<ActionResult<List<CalDayData>>> Get([FromQuery] DateTime date)
+        [HttpPost("getmonthdata")]
+        public async Task<ActionResult<List<CalDayData>>> GetMonthData(DateTime date)
         {
             List<CalDayData> dayList = new List<CalDayData>();
 
@@ -69,6 +69,7 @@ namespace OpenTimesheets.Server.Controllers
                         dd.HrsWorked = result.HrsNorm;
                         dd.HrsAllocated = 0; //todo: needs to be implemented
                         dd.Username = result.Username;
+                        dayList.Add(dd);
                     }
                 }
             }
