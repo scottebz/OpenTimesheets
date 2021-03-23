@@ -41,7 +41,9 @@ namespace OpenTimesheets.Client.Helpers
         public async Task<HttpResponseWrapper<object>> Post<T>(string url, T data)
         {
             var dataJson = JsonSerializer.Serialize(data);
+            Console.WriteLine("jsonData: " + dataJson.ToString());
             var stringContent = new StringContent(dataJson, Encoding.UTF8, "application/json");
+            //var stringContent = new StringContent(dataJson, Encoding.UTF8, "text/plain");
             var response = await httpClient.PostAsync(url, stringContent);
             return new HttpResponseWrapper<object>(null, response.IsSuccessStatusCode, response);
         }
@@ -83,6 +85,8 @@ namespace OpenTimesheets.Client.Helpers
         {
             var dataJson = JsonSerializer.Serialize(data);
             var stringContent = new StringContent(dataJson, Encoding.UTF8, "application/json");
+            Console.WriteLine("dataJson: " + dataJson);
+            Console.WriteLine(stringContent.ToString());
             var response = await httpClient.PostAsync(url, stringContent);
             if (response.IsSuccessStatusCode)
             {

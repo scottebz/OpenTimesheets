@@ -28,11 +28,12 @@ namespace OpenTimesheets.Server.Controllers
         public async Task<ActionResult<List<CalDayData>>> GetMonthData(DateTime date)
         {
             List<CalDayData> dayList = new List<CalDayData>();
-
+            Console.WriteLine("Getting Month Data for: " + date.ToString());
 
             try
             {
                 //param date could be anything.  Move it to the first day of the month
+                //DateTime dt = DateTime.Parse(date);
                 DateTime dte = new DateTime(date.Year, date.Month, 1);
 
                 //what day of week is this? (dow)
